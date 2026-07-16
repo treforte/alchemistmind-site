@@ -437,38 +437,76 @@
       }
 
       @media (max-width: 768px) {
+        /* Nav */
         .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy-dark); flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 16px 16px; border-bottom: 1px solid rgba(201,162,39,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
         .nav-links.mobile-open { display: flex; }
         .nav-links > a, .nav-dropdown { width: 100%; padding: 11px 4px; }
         .nav-dropdown-menu { position: static; display: block; background: transparent; border: none; box-shadow: none; padding: 4px 0 0 14px; min-width: auto; top: auto; left: auto; }
         .nav-dropdown::after { display: none; }
         .nav-toggle { display: block; }
+        /* Trust bar */
+        .trust-bar { font-size: 11px; padding: 8px 12px; }
+        /* Sections */
         .hero { padding: 48px 16px 64px; }
         .section { padding: 56px 16px; }
+        .product-section { padding: 48px 16px; }
+        .axis-section { padding: 48px 16px; }
+        /* Services intro header (overrides inline 76px padding) */
+        .services-section-intro { padding: 48px 16px 0 !important; }
+        /* Cards & panels */
         .quiz-card, .case-spotlight { padding: 24px 16px; }
+        .pricing-hero-grid { grid-template-columns: 1fr !important; gap: 20px !important; padding: 24px 20px !important; }
+        /* Grids */
         .positioning-grid, .axis-steps { grid-template-columns: 1fr; }
         .secondary-proof { grid-template-columns: 1fr; }
+        /* Hero CTAs */
         .hero-ctas { flex-direction: column; width: 100%; }
         .btn-gold, .btn-ghost { width: 100%; justify-content: center; }
-        .mock-stat-row { grid-template-columns: 1fr; }
+        /* Mock dashboard — keep stats 3-across but compact */
+        .mock-stat-row { grid-template-columns: repeat(3, 1fr); }
+        .mock-stat { padding: 8px 6px; }
+        .mock-stat-num { font-size: 14px; }
+        .mock-stat-label { font-size: 7.5px; }
+        .mock-bar-label { width: 48px; font-size: 10px; }
+        .mock-bar-val { width: 40px; font-size: 10px; }
+        .mock-title { font-size: 10px; }
+        .hero-stat { padding: 16px 18px; }
+        /* Stack consolidation table */
         .stack-row { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 20px 16px; }
         .stack-arrow { transform: rotate(90deg); margin: 6px 0; }
+        /* Founder */
         .founder-photo-badge { right: 0; bottom: -10px; font-size: 11px; padding: 8px 12px; }
-        .product-section { padding: 56px 16px; }
-        .axis-section { padding: 56px 16px; }
-        .axis-phone-frame { width: 230px; }
-        .axis-badge-float { position: static; margin: 10px auto 0; max-width: 260px; }
+        /* Axis video phone — stack badges above/below frame */
+        .axis-phone-frame { width: 220px; }
+        .axis-phone-stage { flex-direction: column; align-items: center; gap: 16px; }
+        .axis-badge-float { position: static; margin: 0 auto; max-width: 260px; }
+        /* Footer */
         footer .footer-inner { flex-direction: column; text-align: center; }
       }
 
       @media (max-width: 480px) {
         .hero-h1 { font-size: 25px; }
-        .hero-stat { min-width: 100%; }
+        /* Hero stats: 2×2 grid instead of 4 stacked */
+        .hero-stat { min-width: calc(50% - 1px); padding: 14px 12px; }
+        .hero-stat-num { font-size: 20px; }
+        .hero-stat-label { font-size: 11px; }
+        .hero-stats { margin-top: 36px; }
         .nav-inner { padding: 0 16px; }
         .quiz-option { padding: 14px; font-size: 13.5px; }
         .case-metric-block { flex-direction: column; align-items: flex-start; }
         .case-metric-nums { margin-top: 6px; }
         .positioning-grid { grid-template-columns: 1fr; }
+        /* Further compact mock stats on very small screens */
+        .mock-stat-num { font-size: 12px; }
+        .mock-stat-label { font-size: 7px; }
+        .mock-bar-label { width: 36px; font-size: 9px; }
+        .mock-bar-val { width: 34px; font-size: 9px; }
+        /* Process badge stack */
+        .process-badge { flex-direction: column; text-align: center; padding: 20px 16px; gap: 10px; }
+        /* Phone frame */
+        .axis-phone-frame { width: 200px; }
+        /* Pricing hero block */
+        .pricing-hero-grid { padding: 20px 16px !important; }
       }
     </style>
 </head>
@@ -816,7 +854,7 @@
 
     <!-- SERVICES / PILLARS -->
     <section id="services">
-        <div style="text-align:center; padding: 76px 24px 0;">
+        <div class="services-section-intro" style="text-align:center; padding: 76px 24px 0;">
             <div class="section-tag">The AMP Growth System</div>
             <h2 class="section-h2" style="max-width:760px; margin:0 auto 16px;">Four Pillars. One Team. Built for the Whole Client Journey.</h2>
             <p class="section-lead" style="margin:0 auto;">From the first click on an ad to a client who keeps referring you more — AMP covers the entire path, not just one piece of it.</p>
@@ -1115,7 +1153,7 @@
             <h2 class="section-h2">Pricing Built for Real Firms, Not Enterprise Bloat</h2>
             <p class="section-lead">Run all four pillars together for the best combined value, or start with the one your firm needs most right now. Every account's complexity is a little different — we'll get you an exact number on a 15-minute call.</p>
 
-            <div style="background: var(--navy-dark); border-radius: 20px; padding: 40px; margin-top: 40px; display:grid; grid-template-columns: 1.6fr 1fr; gap: 36px; align-items: center;">
+            <div class="pricing-hero-grid" style="background: var(--navy-dark); border-radius: 20px; padding: 40px; margin-top: 40px; display:grid; grid-template-columns: 1.6fr 1fr; gap: 36px; align-items: center;">
                 <div>
                     <div style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background: rgba(201,162,39,0.2); color: var(--gold); padding: 5px 12px; border-radius: 6px; margin-bottom: 16px;">Most Firms Choose This</div>
                     <div style="font-family:'Sora'; font-weight:800; font-size: 26px; color: white; margin-bottom: 10px;">The Complete Growth Partnership</div>
