@@ -115,10 +115,11 @@
       .proof-strip { background: var(--navy-dark); padding: 30px 24px; }
       .proof-inner { max-width: 1000px; margin: 0 auto; }
       .proof-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
-      .proof-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; }
-      .proof-logo-card { background: transparent; padding: 0 16px; display: flex; align-items: center; justify-content: center; border: none; }
-      .proof-logo-img { height: 70px; width: auto; display: block; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
-      .proof-logo-abw { height: 60px; }
+      .proof-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 24px; }
+      .proof-logo-card { background: white; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.22); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .proof-logo-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.3); }
+      .proof-logo-img { height: 56px; width: auto; display: block; object-fit: contain; max-width: 160px; }
+      .proof-logo-abw { height: 48px; }
 
       /* Sections */
       .section { padding: 76px 24px; }
@@ -600,10 +601,10 @@
         <div class="proof-inner">
             <p class="proof-label">We've run ads for companies like</p>
             <div class="proof-logos">
-                <div class="proof-logo-card"><img class="proof-logo-img" src="https://media.licdn.com/dms/image/v2/D4E0BAQFgJpW6KNqJmg/company-logo_200_200/B4EZlZNNhlIwAM-/0/1758138259869/the_siegel_law_group_p_a__logo?e=1785974400&v=beta&t=bbzM0k1TBaylCssFGLHo2KEA9ZVYoRXbcAbLDSCF2FI" alt="The Siegel Law Group"></div>
-                <div class="proof-logo-card"><img class="proof-logo-img" src="https://media.licdn.com/dms/image/v2/C4E0BAQHRZw0BPMJwuQ/company-logo_200_200/company-logo_200_200/0/1630569292039?e=1785974400&v=beta&t=LFE3Wh7IuWS7jGw4fWLyH4NOtI4IRuk0uEVSTuYSPXs" alt="Attorney Brian White Injury Lawyer"></div>
-                <div class="proof-logo-card"><img class="proof-logo-img" src="https://media.licdn.com/dms/image/v2/D4E0BAQEo92wAnOcgWQ/company-logo_200_200/company-logo_200_200/0/1705424377263/thecapitallawfirm_logo?e=1785974400&v=beta&t=wbkiK6hdWIQA8tc7WBMd-9oPQ2LG6U9Hbxewxz5NvdI" alt="The Capital Law Firm"></div>
-                <div class="proof-logo-card"><img class="proof-logo-img" src="https://media.licdn.com/dms/image/v2/D560BAQFS7BK1TcjcZg/company-logo_200_200/B56Zt2x.nKJcAI-/0/1767224372133/sweetjames_logo?e=1785974400&v=beta&t=GToUzpYoG4PEhENJi6umfykCofaeMkfEYuSNynRsujY" alt="Sweet James Accident Attorneys"></div>
+                <div class="proof-logo-card"><img class="proof-logo-img" src="assets/logos/tslg-logo.png" alt="The Siegel Law Group, P.A."></div>
+                <div class="proof-logo-card"><img class="proof-logo-img proof-logo-abw" src="assets/logos/abw-logo.png" alt="Attorney Brian White Injury Lawyer"></div>
+                <div class="proof-logo-card"><img class="proof-logo-img" src="assets/logos/capfirm-logo.jpg" alt="The Capital Law Firm"></div>
+                <div class="proof-logo-card"><img class="proof-logo-img" src="assets/logos/sweetjames-logo.jpg" alt="Sweet James Accident Attorneys"></div>
             </div>
         </div>
     </div>
@@ -642,9 +643,9 @@
                         <div class="axis-phone-glow"></div>
                         <div class="axis-phone-inner">
                             <div class="axis-phone-notch"></div>
-                            <video controls playsinline preload="metadata" poster="assets/amp-axis-poster.jpg">
-                                <source src="assets/amp-axis-video.mp4" type="video/mp4">
-                                Your browser doesn't support embedded video. <a href="assets/amp-axis-video.mp4">Watch "The More You Use AMP" here.</a>
+                            <video controls playsinline preload="metadata">
+                                <source src="assets/video/amp-ad.mp4" type="video/mp4">
+                                Your browser doesn't support embedded video. <a href="assets/video/amp-ad.mp4">Watch "The More You Use AMP" here.</a>
                             </video>
                         </div>
                     </div>
