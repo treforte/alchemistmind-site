@@ -237,14 +237,15 @@ STATS = f'''<div class="wrap stats-wrap"><div class="stats reveal">
 </div></div>'''
 
 CASES = f'''<div class="grid-2">
-<div class="case reveal"><span class="case-tag">Estate planning law firm</span><h3>Cost per lead cut in half, with every lead tracked to consult.</h3>
-<div class="metric-pair"><span class="lbl">Cost per lead</span><span class="from">$41.62</span><span class="arrow">{icon("arrow")}</span><span class="to">$20.90</span></div>
-<div class="metric-pair"><span class="lbl">Lead-to-consult visibility</span><span class="from">Guesswork</span><span class="arrow">{icon("arrow")}</span><span class="to">Live in CRM</span></div>
-<p style="margin-top:22px">Rebuilt Google and Meta campaigns, new landing pages and clean conversion tracking. Leadership now sees which campaigns produce consults and retained clients, not just leads.</p></div>
 <div class="case reveal"><span class="case-tag">High-volume personal injury firm</span><h3>Every channel tied to signed cases, plus custom lien tracking.</h3>
 <div class="metric-pair"><span class="lbl">Marketing reporting</span><span class="from">Spreadsheets</span><span class="arrow">{icon("arrow")}</span><span class="to">Live dashboard</span></div>
 <div class="metric-pair"><span class="lbl">Signed cases sent back to Google and Meta</span><span class="from">Never</span><span class="arrow">{icon("arrow")}</span><span class="to">Automated</span></div>
 <p style="margin-top:22px">Leadership now reviews cost per signed case by channel every week and moves budget based on cases, not lead volume. Hospital lien tracking was built into the same dashboard.</p></div>
+<div class="case reveal"><span class="case-tag">Across our client accounts</span><h3>What firms typically see once signed-case data drives the ads.</h3>
+<div class="metric-pair"><span class="lbl">Qualified lead rate</span><span class="from">Baseline</span><span class="arrow">{icon("arrow")}</span><span class="to">+23% avg</span></div>
+<div class="metric-pair"><span class="lbl">Time to first lift</span><span class="from">Quarters</span><span class="arrow">{icon("arrow")}</span><span class="to">&lt; 60 days</span></div>
+<div class="metric-pair"><span class="lbl">Client retention</span><span class="from">Contracts</span><span class="arrow">{icon("arrow")}</span><span class="to">95%+ M2M</span></div>
+<p style="margin-top:22px">From $10K a month to accounts spending $2M+ a month, the playbook is the same: fix the tracking, feed signed cases back to the platforms, and move budget toward what signs.</p></div>
 </div>
 <p class="note-small" style="text-align:center;margin-top:22px">Client names withheld for confidentiality. Full case studies shared on your strategy call.</p>'''
 
