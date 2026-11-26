@@ -627,3 +627,9 @@ tr:last-child td{border-bottom:0}
   .float-chip{font-size:.76rem;padding:8px 12px}
   .hu{font-size:.84rem}
 }
+.phone-stage{flex-direction:column;align-items:center}
+.chip-row{position:relative;z-index:3;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:26px}
+.chip-row .float-chip{position:static}
+.chip-row .fc-a{animation-delay:-2.5s}
+.fc-play{top:2%;left:4%}
+@media (min-width:761px){.phone-stage{padding-top:64px}.fc-play{top:8px;left:calc(50% - 200px)}}
