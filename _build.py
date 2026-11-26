@@ -257,9 +257,7 @@ home = f'''
 <div class="btn-row">{book("Book a Strategy Call","btn-primary","home-hero")}<a href="#calculator" class="btn btn-ghost">Calculate your cost per signed case</a></div>
 <div class="trust-row">{gp_badge()}<span class="trust-item">{icon("check",16)}95%+ client retention</span><span class="trust-item">{icon("check",16)}Month-to-month, no contracts</span></div>
 </div>
-<div style="position:relative">{dash_mock()}
-</div>
-</div>
+<div style="position:relative">{dash_mock()}</div>
 </div></section>
 {STATS}
 
