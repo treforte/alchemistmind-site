@@ -5,6 +5,8 @@ Run: python3 src/build.py  -> writes HTML into dist/
 import os, json
 OUT = os.path.dirname(os.path.abspath(__file__))
 GTM = "GTM-WVP5239R"
+import time
+ASSET_V = time.strftime("%Y%m%d%H%M")  # cache-buster, changes every build
 SITE = "https://alchemistmind.pro"
 EMAIL = "team@alchemistmind.pro"
 LINKEDIN = "https://www.linkedin.com/in/tre-forte-9579a4154/"
@@ -113,7 +115,7 @@ def page(fname, title, desc, body, active=None):
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/styles.css?v={ASSET_V}">
 <script>(function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}})(window,document,'script','dataLayer','{GTM}');</script>
 </head><body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={GTM}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -121,7 +123,7 @@ def page(fname, title, desc, body, active=None):
 <main>{body}</main>
 {sticky_cta() if "sticky-cta" not in body else ""}
 {footer()}
-<script src="assets/main.js"></script>
+<script src="assets/main.js?v={ASSET_V}"></script>
 </body></html>'''
     with open(os.path.join(OUT,fname),"w") as f: f.write(html)
 
