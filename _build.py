@@ -258,7 +258,7 @@ home = f'''
 <div class="trust-row">{gp_badge()}<span class="trust-item">{icon("check",16)}95%+ client retention</span><span class="trust-item">{icon("check",16)}Month-to-month, no contracts</span></div>
 </div>
 <div style="position:relative">{dash_mock()}
-<div class="float-card" style="left:-28px;top:-26px"><span class="dot">&darr;</span><div><b>-38%</b><small>blended cost per signed case</small></div></div>
+</div>
 </div>
 </div></section>
 {STATS}
