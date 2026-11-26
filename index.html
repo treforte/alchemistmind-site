@@ -1,1530 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WVP5239R');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ClearSignal — Know Which Lead Becomes a Signed Case | Built for Law Firms</title>
-    <meta name="description" content="ClearSignal connects your ad spend, intake, and consult calls into one system — so you finally know your true cost-per-signed-case, not just cost-per-lead. Built inside a real law firm's marketing operation.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
-    <style>
-      :root {
-        --navy: #0f2544; --navy-dark: #091a30; --navy-mid: #1a3558; --navy-light: #2a4a72;
-        --gold: #c9a227; --gold-light: #f5e9c0; --gold-dark: #a07d10; --gold-pale: #fdf8ec;
-        --cream: #fafaf7; --teal: #1ba98c; --teal-pale: #e8f7f3;
-      }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: #1e293b; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-      h1,h2,h3,h4 { font-family: 'Sora', sans-serif; }
-
-      /* NAV */
-      .nav-wrap { position: sticky; top: 0; z-index: 100; background: rgba(9,26,48,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,162,39,0.15); }
-      .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-      .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-      .nav-logo-mark { width: 38px; height: 38px; border-radius: 8px; background: linear-gradient(135deg, var(--teal) 0%, #0f7a64 100%); display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 13px; color: white; flex-shrink: 0; }
-      .nav-logo-text { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 16px; color: white; line-height: 1.2; }
-      .nav-logo-sub { font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 10.5px; color: rgba(201,162,39,0.8); }
-      .nav-links { display: flex; align-items: center; gap: 28px; }
-      .nav-links > a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 13.5px; font-weight: 500; transition: color 0.2s; }
-      .nav-links > a:hover { color: var(--gold); }
-      .nav-cta { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: white; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 13px; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; text-decoration: none; transition: all 0.2s; white-space: nowrap; box-shadow: 0 2px 10px rgba(201,162,39,0.35); }
-      .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(201,162,39,0.5); }
-
-      /* Products dropdown (fixed: trigger now has its own color, not relying on .nav-links a) */
-      .nav-dropdown { position: relative; }
-      /* Invisible hover bridge: spans the gap between trigger and menu so the menu doesn't vanish mid-reach */
-      .nav-dropdown::after { content: ''; position: absolute; top: 100%; left: 0; width: 100%; height: 18px; }
-      .nav-dropdown-trigger { display: flex; align-items: center; gap: 4px; cursor: pointer; color: rgba(255,255,255,0.75); font-size: 13.5px; font-weight: 500; transition: color 0.2s; }
-      .nav-dropdown:hover .nav-dropdown-trigger { color: var(--gold); }
-      .nav-dropdown-caret { font-size: 10px; transition: transform 0.2s; }
-      .nav-dropdown:hover .nav-dropdown-caret { transform: rotate(180deg); }
-      .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 14px); left: -16px; background: var(--navy-dark); border: 1px solid rgba(201,162,39,0.2); border-radius: 12px; padding: 8px; min-width: 200px; box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
-      .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-      .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 8px; font-size: 13.5px; color: rgba(255,255,255,0.8); white-space: nowrap; text-decoration: none; }
-      .nav-dropdown-menu a:hover { background: rgba(201,162,39,0.12); color: var(--gold); }
-      .nav-toggle { display: none; background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
-
-      .trust-bar { background: linear-gradient(90deg, var(--teal) 0%, #0f7a64 100%); padding: 10px 16px; text-align: center; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 13px; color: white; letter-spacing: 0.02em; }
-
-      /* HERO */
-      .hero { background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 45%, var(--navy-mid) 100%); position: relative; overflow: hidden; padding: 76px 24px 96px; }
-      .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(27,169,140,0.08) 0%, transparent 70%); pointer-events: none; }
-      .hero-grid-overlay { position: absolute; inset: 0; pointer-events: none; opacity: 0.04; background-image: linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px); background-size: 40px 40px; }
-      .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-      .hero-grid-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 60px; align-items: center; }
-
-      .builder-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(27,169,140,0.12); border: 1px solid rgba(27,169,140,0.4); border-radius: 100px; padding: 7px 16px; font-size: 12px; font-weight: 600; color: #6fe0c6; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 20px; }
-      .builder-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
-      @keyframes pulse { 0%,100%{opacity:1}50%{opacity:0.4} }
-
-      /* Rotating H1 */
-      .hero-h1-intro { font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: clamp(15px,1.6vw,18px); color: rgba(255,255,255,0.55); letter-spacing: 0.02em; margin-bottom: 6px; }
-      .hero-h1 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(28px,3.8vw,48px); color: white; line-height: 1.12; margin-bottom: 22px; }
-      .rotating-wrap { display: inline-block; overflow: hidden; position: relative; vertical-align: bottom; }
-      .rotating-line { display: block; color: var(--gold); white-space: nowrap; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.45s ease; }
-      .rotating-line.slide-out { transform: translateY(-110%); opacity: 0; }
-      .rotating-line.slide-in-pre { transform: translateY(110%); opacity: 0; transition: none; }
-
-      .hero-h2 { font-size: clamp(14px,1.55vw,16.5px); color: rgba(255,255,255,0.72); max-width: 520px; line-height: 1.72; margin-bottom: 30px; font-weight: 300; }
-      .hero-h2 strong { color: white; font-weight: 600; }
-
-      .hero-bullets { display: flex; flex-direction: column; gap: 13px; margin-bottom: 34px; }
-      .hero-bullet { display: flex; align-items: flex-start; gap: 12px; }
-      .hero-bullet-icon { width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0; margin-top: 1px; background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.3); display: flex; align-items: center; justify-content: center; font-size: 14px; }
-      .hero-bullet-text { font-size: 14px; color: rgba(255,255,255,0.82); line-height: 1.5; }
-      .hero-bullet-text strong { color: white; }
-
-      .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
-      .btn-gold { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: white; font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; padding: 16px 30px; border-radius: 10px; border: none; cursor: pointer; text-decoration: none; transition: all 0.25s; box-shadow: 0 4px 20px rgba(201,162,39,0.4); text-align: center; }
-      .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,162,39,0.55); }
-      .btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: white; font-family: 'Sora', sans-serif; font-weight: 600; font-size: 15px; padding: 16px 26px; border-radius: 10px; cursor: pointer; text-decoration: none; transition: all 0.25s; text-align: center; }
-      .btn-ghost:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.4); }
-      .guarantee-strip { display: flex; align-items: center; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.5); }
-
-      .urgency-bar { background: rgba(201,162,39,0.09); border: 1px solid rgba(201,162,39,0.22); border-radius: 12px; padding: 14px 20px; margin-top: 28px; display: flex; align-items: flex-start; gap: 12px; }
-      .urgency-bar-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
-      .urgency-bar-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; }
-      .urgency-bar-text strong { color: var(--gold); }
-
-      /* Mock dashboard */
-      .mock-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 22px; box-shadow: 0 30px 70px rgba(0,0,0,0.35); width: 100%; min-width: 0; overflow: hidden; }
-      .mock-topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
-      .mock-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 12px; color: white; }
-      .mock-pill { font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; background: rgba(27,169,140,0.18); color: #6fe0c6; padding: 4px 10px; border-radius: 100px; }
-      .mock-bars { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
-      .mock-bar-row { display: flex; align-items: center; gap: 10px; }
-      .mock-bar-label { font-size: 11px; color: rgba(255,255,255,0.55); width: 70px; flex-shrink: 0; }
-      .mock-bar-track { flex: 1; height: 10px; background: rgba(255,255,255,0.08); border-radius: 6px; overflow: hidden; }
-      .mock-bar-fill { height: 100%; border-radius: 6px; }
-      .mock-bar-val { font-size: 11px; font-weight: 700; color: white; width: 54px; text-align: right; flex-shrink: 0; }
-      .mock-stat-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-      .mock-stat { background: rgba(255,255,255,0.04); border-radius: 10px; padding: 12px; }
-      .mock-stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 17px; color: var(--gold); }
-      .mock-stat-label { font-size: 9.5px; color: rgba(255,255,255,0.5); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.04em; }
-      .mock-caption { text-align: center; font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 12px; font-style: italic; }
-
-      /* Ticker */
-      .ticker-wrap { overflow: hidden; border-top: 1px solid rgba(255,255,255,0.07); border-bottom: 1px solid rgba(255,255,255,0.07); padding: 12px 0; margin-top: 14px; }
-      .ticker-track { display: flex; gap: 48px; width: max-content; animation: tickerScroll 26s linear infinite; }
-      .ticker-track:hover { animation-play-state: paused; }
-      .ticker-item { font-size: 11.5px; color: rgba(255,255,255,0.45); white-space: nowrap; display: flex; align-items: center; gap: 7px; }
-      .ticker-item span { color: var(--gold); font-weight: 700; }
-      @keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-      /* Hero stats bar */
-      .hero-stats { display: flex; flex-wrap: wrap; gap: 1px; background: rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); margin-top: 56px; }
-      .hero-stat { flex: 1; min-width: 140px; padding: 22px 26px; background: rgba(9,26,48,0.5); }
-      .hero-stat-num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 25px; color: var(--gold); }
-      .hero-stat-label { font-size: 12.5px; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 300; }
-
-      /* Proof strip — transparent PNG logos, no card background */
-      .proof-strip { background: var(--navy-dark); padding: 30px 24px; }
-      .proof-inner { max-width: 1000px; margin: 0 auto; }
-      .proof-label { text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 18px; }
-      .proof-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 40px; }
-      .proof-logo-card { background: transparent; padding: 0 16px; display: flex; align-items: center; justify-content: center; border: none; }
-      .proof-logo-img { height: 70px; width: auto; display: block; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3)); }
-      .proof-logo-abw { height: 60px; }
-
-      /* Sections */
-      .section { padding: 76px 24px; }
-      .section-inner { max-width: 1100px; margin: 0 auto; }
-      .section-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 12px; }
-      .section-h2 { font-family: 'Sora', sans-serif; font-weight: 800; font-size: clamp(26px,3.6vw,40px); color: var(--navy-dark); line-height: 1.15; margin-bottom: 16px; }
-      .section-lead { font-size: 16px; color: #475569; line-height: 1.65; max-width: 660px; font-weight: 300; }
-
-      /* Problem */
-      .problem-section { background: var(--cream); }
-      .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; margin-top: 44px; }
-      .problem-card { background: white; border-radius: 16px; padding: 26px; border: 1px solid #f0ece4; }
-      .problem-icon { font-size: 26px; margin-bottom: 13px; }
-      .problem-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy-dark); margin-bottom: 8px; line-height: 1.35; }
-      .problem-desc { font-size: 13.5px; color: #64748b; line-height: 1.6; }
-
-      /* Quiz */
-      .quiz-section { background: white; padding: 80px 24px; }
-      .quiz-card { max-width: 720px; margin: 44px auto 0; background: var(--cream); border: 1px solid #f0ece4; border-radius: 22px; padding: 44px; min-height: 320px; }
-      .quiz-progress-wrap { margin-bottom: 32px; }
-      .quiz-progress-track { height: 6px; background: #e8e2d4; border-radius: 100px; overflow: hidden; }
-      .quiz-progress-fill { height: 100%; background: linear-gradient(90deg,var(--gold) 0%,var(--gold-dark) 100%); width: 20%; transition: width 0.35s ease; border-radius: 100px; }
-      .quiz-progress-text { font-size: 12px; color: #94a3b8; margin-top: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
-      .quiz-step { display: none; animation: fadeUp 0.4s ease both; }
-      .quiz-step.active { display: block; }
-      .quiz-q-text { font-family: 'Sora'; font-weight: 700; font-size: 19px; color: var(--navy-dark); margin-bottom: 22px; line-height: 1.4; }
-      .quiz-options { display: flex; flex-direction: column; gap: 11px; }
-      .quiz-option { display: flex; align-items: center; gap: 14px; background: white; border: 1.5px solid #e8e2d4; border-radius: 12px; padding: 16px 18px; cursor: pointer; font-size: 14.5px; color: #334155; transition: all 0.15s; }
-      .quiz-option:hover { border-color: var(--gold-light); transform: translateX(2px); }
-      .quiz-option.selected { border-color: var(--gold); background: var(--gold-pale); font-weight: 600; color: var(--navy-dark); }
-      .quiz-option-dot { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid #cbd5e1; flex-shrink: 0; position: relative; }
-      .quiz-option.selected .quiz-option-dot { border-color: var(--gold); }
-      .quiz-option.selected .quiz-option-dot::after { content:''; position:absolute; inset:3px; border-radius:50%; background:var(--gold); }
-      .quiz-back-row { margin-top: 24px; min-height: 20px; }
-      .quiz-back-row a { font-size: 13px; color: #94a3b8; text-decoration: none; }
-      .quiz-back-row a:hover { color: var(--navy-dark); }
-      .quiz-result { display: none; }
-      .quiz-result.show { display: block; animation: fadeUp 0.4s ease both; text-align: center; }
-      .quiz-result-score { font-family:'Sora'; font-weight:800; font-size:38px; margin-bottom:6px; }
-      .quiz-result-label { font-family:'Sora'; font-weight:700; font-size:18px; margin-bottom:12px; }
-      .quiz-result-text { font-size:14px; line-height:1.65; max-width:560px; margin:0 auto 8px; color:#475569; }
-      .quiz-result-score.band-red, .quiz-result-label.band-red { color:#b91c1c; }
-      .quiz-result-score.band-amber, .quiz-result-label.band-amber { color:#b45309; }
-      .quiz-result-score.band-green, .quiz-result-label.band-green { color:#0f7a64; }
-      .quiz-gaps { display:flex; flex-direction:column; gap:12px; margin-top:26px; text-align:left; }
-      .quiz-gap-card { background:white; border:1px solid #f0ece4; border-radius:12px; padding:18px 20px; }
-      .quiz-gap-tool { display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:var(--gold-pale); color:var(--gold-dark); padding:3px 9px; border-radius:6px; margin-bottom:8px; }
-      .quiz-gap-title { font-family:'Sora'; font-weight:700; font-size:14px; color:var(--navy-dark); margin-bottom:5px; }
-      .quiz-gap-text { font-size:12.5px; color:#64748b; line-height:1.55; }
-
-      /* Calculator */
-      .calc-section { background: var(--navy-dark); padding: 80px 24px; position: relative; overflow: hidden; }
-      .calc-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(27,169,140,0.1) 0%,transparent 70%); pointer-events:none; }
-      .calc-inner { max-width: 1000px; margin: 0 auto; position: relative; }
-      .calc-grid { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 48px; margin-top: 40px; align-items: start; }
-      .calc-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 18px; padding: 28px; }
-      .calc-field { margin-bottom: 18px; }
-      .calc-label { font-size: 12.5px; color: rgba(255,255,255,0.65); margin-bottom: 6px; display: block; font-weight: 500; }
-      .calc-input { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 12px 14px; color: white; font-family: 'Sora'; font-weight: 600; font-size: 15px; outline: none; }
-      .calc-input:focus { border-color: var(--gold); }
-      .calc-result-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(201,162,39,0.3); border-radius: 18px; padding: 28px; }
-      .calc-result-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-      .calc-result-num { font-family:'Sora'; font-weight:800; font-size:34px; color:white; margin-bottom:4px; }
-      .calc-result-num.highlight { color: var(--gold); }
-      .calc-result-sub { font-size: 12.5px; color: rgba(255,255,255,0.5); margin-bottom: 22px; }
-      .calc-divider { height: 1px; background: rgba(255,255,255,0.1); margin: 20px 0; }
-      .calc-cta-note { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 18px; }
-
-      /* Positioning */
-      .positioning-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:48px; }
-      .pos-card { border-radius:16px; padding:28px; position:relative; overflow:hidden; border:1px solid transparent; }
-      .pos-card.crm { background:#fef2f2; border-color:#fecaca; }
-      .pos-card.sheets { background:#f0f9ff; border-color:#bae6fd; }
-      .pos-card.analyst { background:#fefce8; border-color:#fde68a; }
-      .pos-card.cs { background:var(--navy-dark); border-color:rgba(27,169,140,0.4); }
-      .pos-card-label { font-family:'Sora',sans-serif; font-weight:700; font-size:12.5px; margin-bottom:8px; }
-      .pos-card.crm .pos-card-label{color:#dc2626} .pos-card.sheets .pos-card-label{color:#0284c7} .pos-card.analyst .pos-card-label{color:#b45309} .pos-card.cs .pos-card-label{color:#6fe0c6}
-      .pos-card-title { font-family:'Sora',sans-serif; font-weight:700; font-size:18px; margin-bottom:15px; line-height:1.3; }
-      .pos-card.crm .pos-card-title{color:#7f1d1d} .pos-card.sheets .pos-card-title{color:#0c4a6e} .pos-card.analyst .pos-card-title{color:#78350f} .pos-card.cs .pos-card-title{color:white}
-      .pos-item { display:flex; align-items:flex-start; gap:8px; font-size:13.5px; line-height:1.5; margin-bottom:9px; }
-      .pos-card.crm .pos-item{color:#7f1d1d} .pos-card.sheets .pos-item{color:#075985} .pos-card.analyst .pos-item{color:#78350f} .pos-card.cs .pos-item{color:rgba(255,255,255,0.85)}
-      .pos-card.cs .winner-badge { position:absolute; top:18px; right:18px; background:var(--teal); color:white; font-family:'Sora',sans-serif; font-weight:700; font-size:9.5px; padding:4px 9px; border-radius:100px; letter-spacing:0.05em; text-transform:uppercase; }
-
-      /* Comp table */
-      .comp-table-wrap { overflow-x:auto; margin-top:40px; -webkit-overflow-scrolling: touch; }
-      .comp-table { width:100%; border-collapse:separate; border-spacing:0; border-radius:16px; overflow:hidden; border:1px solid #e8e2d4; min-width:720px; }
-      .comp-table thead th { padding:16px 18px; font-family:'Sora',sans-serif; font-weight:700; font-size:13px; text-align:left; }
-      .comp-table thead th.cs-col{background:var(--navy-dark);color:white} .comp-table thead th.other-col{background:#f8f6f2;color:#64748b} .comp-table thead th.label-col{background:white;color:var(--navy-dark)}
-      .comp-table tbody tr td { padding:13px 18px; font-size:13.5px; border-bottom:1px solid #f0ece4; }
-      .comp-table tbody tr:last-child td { border-bottom:none; }
-      .comp-table tbody td.label-col{font-weight:500;color:var(--navy-dark);background:white}
-      .comp-table tbody td.cs-col{background:rgba(15,37,68,0.03);font-weight:600;color:var(--navy-dark)}
-      .comp-table tbody td.other-col{background:#fafaf7;color:#64748b}
-      .check{color:#16a34a;font-weight:700} .cross{color:#dc2626} .partial{color:#d97706}
-      .comp-disclaimer { font-size:11.5px; color:#94a3b8; margin-top:14px; font-style:italic; }
-
-      /* Products */
-      .product-section { padding: 80px 24px; }
-      .product-row { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:64px; align-items:center; max-width:1100px; margin:0 auto; }
-      .product-row.reverse .product-visual { order:2; }
-      .product-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:6px 14px; border-radius:100px; margin-bottom:18px; }
-      .product-h3 { font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(24px,3vw,32px); color:var(--navy-dark); line-height:1.2; margin-bottom:14px; }
-      .product-desc { font-size:15px; color:#475569; line-height:1.7; margin-bottom:24px; }
-      .product-features { display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
-      .product-feature { display:flex; align-items:flex-start; gap:10px; font-size:14px; color:#334155; }
-      .product-feature .pf-check { flex-shrink:0; margin-top:1px; }
-      .product-note { background:var(--gold-pale); border:1px solid var(--gold-light); border-radius:10px; padding:14px 16px; font-size:13px; color:var(--navy); line-height:1.55; margin-bottom:14px; }
-      .trial-badge { display:inline-flex; align-items:center; gap:6px; background:var(--teal-pale); border:1px solid #a7e6da; color:#0f7a64; font-family:'Sora'; font-weight:700; font-size:12px; padding:7px 14px; border-radius:100px; }
-
-      /* Standout expandable */
-      .standout-card { background:var(--navy-dark); border-radius:12px; overflow:hidden; }
-      .standout-summary { display:flex; align-items:flex-start; gap:12px; padding:16px 18px; cursor:pointer; list-style:none; }
-      .standout-summary::-webkit-details-marker { display:none; }
-      .standout-icon { font-size:20px; flex-shrink:0; }
-      .standout-label-row { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:4px; }
-      .standout-label { font-family:'Sora'; font-weight:700; font-size:12.5px; color:var(--gold); text-transform:uppercase; letter-spacing:0.04em; }
-      .standout-chevron { color:var(--gold); font-size:16px; flex-shrink:0; transition:transform 0.25s; }
-      .standout-card[open] .standout-chevron { transform:rotate(45deg); }
-      .standout-summary-text { font-size:13px; color:white; line-height:1.55; }
-      .standout-expanded { padding:0 18px 18px 50px; }
-      .standout-expanded-block { margin-bottom:10px; }
-      .standout-expanded-block:last-child { margin-bottom:0; }
-      .standout-expanded-label { font-size:11px; font-weight:700; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:3px; }
-      .standout-expanded-text { font-size:12.5px; color:rgba(255,255,255,0.8); line-height:1.6; }
-
-      /* Visuals */
-      .clearsignal-visual { background:var(--navy-dark); border-radius:20px; padding:28px; box-shadow:0 30px 70px rgba(15,37,68,0.2); width: 100%; }
-      .checkin-visual { background:white; border:1px solid #e8e2d4; border-radius:20px; padding:28px; box-shadow:0 20px 50px rgba(15,37,68,0.08); width: 100%; }
-      .checkin-kiosk { background:var(--navy-dark); border-radius:16px; padding:24px; margin-bottom:16px; }
-      .kiosk-screen { background:white; border-radius:10px; padding:20px; text-align:center; }
-      .kiosk-welcome { font-family:'Sora'; font-weight:700; font-size:14px; color:var(--navy-dark); margin-bottom:4px; }
-      .kiosk-sub { font-size:11px; color:#94a3b8; margin-bottom:16px; }
-      .kiosk-btn { background:var(--teal); color:white; font-family:'Sora'; font-weight:700; font-size:12px; padding:10px; border-radius:8px; }
-
-      /* Compound grid */
-      .compound-steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:4px; margin-top:48px; align-items:stretch; }
-      .compound-step { background: rgba(255,255,255,0.05); padding: 26px 22px; text-align:center; }
-      .compound-step:first-child{border-radius:14px 0 0 14px} .compound-step:last-child{border-radius:0 14px 14px 0; background:rgba(201,162,39,0.15);}
-      .compound-step-num { font-family:'Sora'; font-weight:800; font-size:22px; color:var(--gold); margin-bottom:10px; }
-      .compound-step-title { font-family:'Sora'; font-weight:700; font-size:14px; color:white; margin-bottom:8px; }
-      .compound-step-text { font-size:12px; color:rgba(255,255,255,0.55); line-height:1.5; }
-      .compound-outcomes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:36px; }
-      .compound-outcome { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 22px; }
-      .compound-outcome-h { font-family:'Sora'; font-weight:800; font-size:20px; color: var(--gold); margin-bottom: 6px; }
-      .compound-outcome-t { font-size:12.5px; color:rgba(255,255,255,0.6); line-height:1.55; }
-
-      /* Bundle */
-      .bundle-cards-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:44px; }
-
-      /* Integrations */
-      .integ-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:44px; }
-      .integ-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 22px; text-align: center; }
-      .integ-card.accent { border-color: rgba(201,162,39,0.3); }
-      .integ-card-name { font-family:'Sora'; font-weight:700; font-size: 15px; color: white; margin-bottom: 4px; }
-      .integ-card.accent .integ-card-name { color: var(--gold); }
-      .integ-card-sub { font-size: 12px; color: rgba(255,255,255,0.5); }
-
-      /* Stack */
-      .stack-section { background:var(--gold-pale); }
-      .stack-table { width:100%; margin-top:40px; border-radius:16px; overflow:hidden; border:1px solid var(--gold-light); background:white; }
-      .stack-row { display:grid; grid-template-columns:1fr 40px 1fr; align-items:center; padding:18px 24px; border-bottom:1px solid #f0ece4; gap:12px; }
-      .stack-row:last-child { border-bottom:none; }
-      .stack-current { font-size:14px; color:#64748b; }
-      .stack-current strong { color:var(--navy-dark); display:block; font-family:'Sora'; font-weight:600; font-size:14.5px; margin-bottom:2px; }
-      .stack-arrow { text-align:center; color:var(--gold-dark); font-size:18px; }
-      .stack-new { font-size:14px; color:var(--navy); font-weight:600; display:flex; align-items:center; gap:8px; }
-      .stack-note { text-align:center; margin:28px auto 0; font-size:14.5px; color:#475569; max-width:600px; line-height:1.6; }
-
-      /* Results */
-      .results-section { background:white; }
-      .case-spotlight { background:var(--gold-pale); border:1px solid var(--gold-light); border-radius:22px; padding:44px; margin-top:48px; display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:44px; align-items:center; }
-      .case-industry-tag { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-dark); margin-bottom:10px; }
-      .case-spotlight-title { font-family:'Sora'; font-weight:800; font-size:22px; color:var(--navy-dark); margin-bottom:16px; line-height:1.3; }
-      .case-spotlight-quote { font-size:15px; color:var(--navy); line-height:1.65; font-style:italic; margin-bottom:14px; border-left:3px solid var(--gold); padding-left:16px; }
-      .case-spotlight-author { font-size:13px; font-weight:600; color:var(--gold-dark); }
-      .case-metric-stack { display:flex; flex-direction:column; gap:14px; }
-      .case-metric-block { background:white; border-radius:14px; padding:18px 22px; display:flex; align-items:center; justify-content:space-between; gap: 10px; }
-      .case-metric-label { font-size:12.5px; color:#64748b; }
-      .case-metric-nums { display:flex; align-items:center; gap:10px; flex-shrink:0; }
-      .case-metric-before { font-size:14px; color:#dc2626; text-decoration:line-through; }
-      .case-metric-after { font-family:'Sora'; font-weight:800; font-size:19px; color:#16a34a; }
-      .secondary-proof { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:24px; }
-      .proof-mini-card { background:var(--cream); border-radius:16px; padding:26px; border:1px solid #f0ece4; }
-      .proof-mini-tag { font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-dark); margin-bottom:8px; }
-      .proof-mini-text { font-size:14px; color:#475569; line-height:1.65; }
-
-      /* Founder */
-      .founder-section { background:var(--cream); padding:80px 24px; }
-      .founder-inner { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1.3fr; gap:64px; align-items:start; }
-      .founder-photo-wrap { position:relative; width:100%; max-width:440px; margin:0 auto; }
-      .founder-photo { width:100%; aspect-ratio:4/5; border-radius:20px; overflow:hidden; border:3px solid var(--gold); box-shadow:0 28px 70px rgba(15,37,68,0.22); background:var(--navy); }
-      .founder-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
-      .founder-photo-badge { position:absolute; bottom:-18px; right:-18px; background:var(--navy-dark); border:2px solid var(--gold); color:white; font-family:'Sora'; font-weight:700; font-size:12px; padding:12px 18px; border-radius:12px; box-shadow:0 8px 28px rgba(15,37,68,0.35); line-height:1.3; text-align:center; white-space:nowrap; }
-      .founder-name { font-family:'Sora'; font-weight:800; font-size:32px; color:var(--navy-dark); margin-bottom:4px; }
-      .founder-title { font-size:13.5px; font-weight:500; color:var(--gold-dark); letter-spacing:0.04em; text-transform:uppercase; margin-bottom:22px; }
-      .founder-quote { font-size:17px; font-weight:300; color:var(--navy); line-height:1.65; border-left:3px solid var(--gold); padding-left:18px; margin-bottom:22px; font-style:italic; }
-      .founder-p { font-size:14.5px; color:#475569; line-height:1.7; margin-bottom:14px; }
-      .founder-links { display:flex; gap:12px; margin-top:22px; flex-wrap:wrap; }
-      .li-link { display:inline-flex; align-items:center; gap:8px; background:white; border:1px solid #e8e2d4; padding:10px 18px; border-radius:10px; font-family:'Sora'; font-weight:600; font-size:13px; color:var(--navy-dark); text-decoration:none; transition:all 0.2s; }
-      .li-link:hover { border-color:var(--gold); background:var(--gold-pale); }
-
-      /* Process / Roadmap */
-      .process-section { background: var(--cream); padding: 80px 24px; }
-      .process-timeline { max-width: 800px; margin: 48px auto 0; }
-      .process-step { display: grid; grid-template-columns: 56px 1fr; gap: 22px; position: relative; }
-      .process-step:not(:last-child) { padding-bottom: 36px; }
-      .process-step:not(:last-child)::before { content: ''; position: absolute; left: 27px; top: 56px; bottom: 0; width: 2px; background: #e8e2d4; }
-      .process-num { width: 56px; height: 56px; border-radius: 50%; background: var(--navy-dark); color: white; font-family: 'Sora'; font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 1; }
-      .process-step.process-final .process-num { background: var(--gold); }
-      .process-content { padding-top: 8px; }
-      .process-title { font-family: 'Sora'; font-weight: 700; font-size: 17px; color: var(--navy-dark); margin-bottom: 4px; }
-      .process-when { display: inline-block; font-size: 11px; font-weight: 700; color: var(--gold-dark); background: var(--gold-pale); padding: 2px 9px; border-radius: 6px; margin-bottom: 8px; }
-      .process-desc { font-size: 13.5px; color: #64748b; line-height: 1.6; }
-      .process-badge { max-width: 800px; margin: 36px auto 0; background: var(--navy-dark); border-radius: 16px; padding: 24px 30px; display: flex; align-items: center; gap: 18px; }
-      .process-badge-num { font-family: 'Sora'; font-weight: 800; font-size: 30px; color: var(--gold); flex-shrink: 0; }
-      .process-badge-text { font-size: 13.5px; color: rgba(255,255,255,0.75); line-height: 1.55; }
-      .process-badge-text strong { color: white; }
-
-      /* Pricing */
-      .pricing-section { background: white; padding: 80px 24px; }
-      .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 48px; }
-      .price-card { border-radius: 18px; padding: 32px; border: 1px solid #f0ece4; display: flex; flex-direction: column; }
-      .price-card.featured { background: var(--navy-dark); border-color: rgba(201,162,39,0.4); transform: translateY(-8px); box-shadow: 0 30px 60px rgba(15,37,68,0.25); }
-      .price-tier-badge { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: var(--gold-light); color: var(--gold-dark); padding: 4px 10px; border-radius: 6px; margin-bottom: 16px; align-self: flex-start; }
-      .price-card.featured .price-tier-badge { background: rgba(201,162,39,0.2); color: var(--gold); }
-      .price-tier-name { font-family: 'Sora'; font-weight: 700; font-size: 20px; color: var(--navy-dark); margin-bottom: 6px; }
-      .price-card.featured .price-tier-name { color: white; }
-      .price-amount { font-family: 'Sora'; font-weight: 800; font-size: 30px; color: var(--navy-dark); margin-bottom: 4px; }
-      .price-card.featured .price-amount { color: var(--gold); }
-      .price-amount span { font-size: 14px; font-weight: 500; color: #94a3b8; }
-      .price-card.featured .price-amount span { color: rgba(255,255,255,0.5); }
-      .price-desc { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 22px; }
-      .price-card.featured .price-desc { color: rgba(255,255,255,0.65); }
-      .price-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; flex: 1; }
-      .price-feature { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; color: #334155; }
-      .price-card.featured .price-feature { color: rgba(255,255,255,0.8); }
-      .price-cta { text-align: center; padding: 13px; border-radius: 10px; font-family: 'Sora'; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.2s; cursor: pointer; }
-      .price-cta.outline { border: 1px solid #e8e2d4; color: var(--navy-dark); }
-      .price-cta.outline:hover { border-color: var(--gold); background: var(--gold-pale); }
-      .price-cta.solid { background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: white; box-shadow: 0 4px 16px rgba(201,162,39,0.35); }
-      .addon-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
-      .addon-card { background: var(--gold-pale); border: 1px solid var(--gold-light); border-radius: 14px; padding: 22px 26px; }
-      .addon-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 10px; }
-      .addon-name { font-family: 'Sora'; font-weight: 700; font-size: 14.5px; color: var(--navy-dark); margin-bottom: 3px; }
-      .addon-desc { font-size: 12.5px; color: #64748b; }
-      .addon-price { font-family: 'Sora'; font-weight: 800; font-size: 17px; color: var(--gold-dark); white-space: nowrap; }
-      .pricing-footnote { text-align: center; margin-top: 36px; font-size: 14px; color: #64748b; }
-
-      /* FAQ */
-      .faq-section { background: var(--cream); padding: 80px 24px; }
-      .faq-inner { max-width: 760px; margin: 0 auto; }
-      .faq-item { border-bottom: 1px solid #e8e2d4; }
-      details.faq-item summary { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; list-style: none; }
-      details.faq-item summary::-webkit-details-marker { display: none; }
-      .faq-q { font-family: 'Sora'; font-weight: 600; font-size: 15.5px; color: var(--navy-dark); line-height: 1.4; }
-      .faq-chevron { color: var(--gold); font-size: 20px; flex-shrink: 0; transition: transform 0.25s; }
-      details[open] .faq-chevron { transform: rotate(45deg); }
-      .faq-a { padding: 0 0 20px; font-size: 14.5px; color: #475569; line-height: 1.7; }
-
-      /* Final CTA */
-      .final-cta { background: var(--navy-dark); padding: 96px 24px; text-align: center; position: relative; overflow: hidden; }
-      .final-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 50% 0%, rgba(27,169,140,0.1) 0%, transparent 70%); pointer-events: none; }
-      .final-cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; }
-      .final-cta-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
-      .final-cta-h2 { font-family: 'Sora'; font-weight: 800; font-size: clamp(28px, 4.4vw, 46px); color: white; line-height: 1.15; margin-bottom: 18px; }
-      .final-cta-h2 span { color: var(--gold); }
-      .final-cta-sub { font-size: 16.5px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 40px; font-weight: 300; }
-      .final-cta-checks { display: flex; flex-direction: column; gap: 8px; margin-top: 30px; align-items: center; }
-      .final-cta-check { font-size: 13.5px; color: rgba(255,255,255,0.6); }
-      .final-cta-check span { color: var(--gold); margin-right: 8px; }
-
-      /* Footer */
-      footer { background: #050f1e; padding: 32px 24px; }
-      footer .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-      footer p { font-size: 13px; color: rgba(255,255,255,0.35); }
-      footer nav { display: flex; gap: 24px; flex-wrap: wrap; }
-      footer nav a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; }
-      footer nav a:hover { color: var(--gold); }
-
-      /* Modal */
-      .modal-overlay { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; transition: all 0.25s; }
-      .modal-overlay.open { opacity: 1; visibility: visible; }
-      .modal-box { background: white; border-radius: 20px; width: 100%; max-width: 900px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.4); }
-      .modal-header { background: var(--navy-dark); padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; }
-      .modal-title { font-family: 'Sora'; font-weight: 700; font-size: 18px; color: white; }
-      .modal-close { background: none; border: none; color: rgba(255,255,255,0.6); font-size: 24px; cursor: pointer; line-height: 1; }
-      .modal-close:hover { color: white; }
-      #calendly-container { height: 620px; }
-
-      /* Sticky mobile CTA */
-      .sticky-mobile { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: var(--navy-dark); border-top: 1px solid rgba(201,162,39,0.25); padding: 12px 20px; display: none; transform: translateY(100%); transition: transform 0.3s; }
-      .sticky-mobile.visible { transform: translateY(0); }
-      @media (max-width: 767px) { .sticky-mobile { display: block; } }
-      .sticky-mobile-btn { width: 100%; padding: 14px; border-radius: 10px; background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%); color: white; font-family: 'Sora'; font-weight: 700; font-size: 15px; border: none; text-align: center; }
-
-      @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-      .fade-in { animation: fadeUp 0.6s ease both; }
-
-      /* ==========================================================
-         RESPONSIVE
-         ========================================================== */
-      @media (max-width: 1024px) {
-        .hero-grid-row, .product-row, .calc-grid, .case-spotlight, .founder-inner {
-          grid-template-columns: 1fr; gap: 40px;
-        }
-        .product-row.reverse .product-visual { order: 0; }
-        .positioning-grid { grid-template-columns: repeat(2, 1fr); }
-        .compound-steps-grid { grid-template-columns: repeat(2, 1fr); }
-        .compound-step:first-child, .compound-step:last-child { border-radius: 12px; }
-        .compound-step { border-radius: 12px; }
-        .integ-grid { grid-template-columns: repeat(3, 1fr); }
-        .pricing-grid { grid-template-columns: 1fr; }
-        .price-card.featured { transform: none; }
-      }
-
-      @media (max-width: 768px) {
-        .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; background: var(--navy-dark); flex-direction: column; align-items: flex-start; gap: 0; padding: 8px 16px 16px; border-bottom: 1px solid rgba(201,162,39,0.15); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
-        .nav-links.mobile-open { display: flex; }
-        .nav-links > a, .nav-dropdown { width: 100%; padding: 11px 4px; }
-        .nav-dropdown-menu { position: static; display: block; background: transparent; border: none; box-shadow: none; padding: 4px 0 0 14px; min-width: auto; top: auto; left: auto; }
-        .nav-dropdown::after { display: none; }
-        .nav-toggle { display: block; }
-        .hero { padding: 48px 16px 64px; }
-        .section { padding: 56px 16px; }
-        .quiz-card, .case-spotlight, .calc-card, .calc-result-card { padding: 24px 16px; }
-        .positioning-grid, .compound-outcomes-grid, .bundle-cards-grid, .compound-steps-grid { grid-template-columns: 1fr; }
-        .integ-grid { grid-template-columns: repeat(2, 1fr); }
-        .secondary-proof, .addon-row { grid-template-columns: 1fr; }
-        .hero-ctas { flex-direction: column; width: 100%; }
-        .btn-gold, .btn-ghost { width: 100%; justify-content: center; }
-        .mock-stat-row { grid-template-columns: 1fr; }
-        .stack-row { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 20px 16px; }
-        .stack-arrow { transform: rotate(90deg); margin: 6px 0; }
-        .founder-photo-badge { right: 0; bottom: -10px; font-size: 11px; padding: 8px 12px; }
-        .product-section { padding: 56px 16px; }
-        .compound-step:first-child, .compound-step:last-child { background: rgba(255,255,255,0.05); }
-        footer .footer-inner { flex-direction: column; text-align: center; }
-      }
-
-      @media (max-width: 480px) {
-        .hero-h1 { font-size: 25px; }
-        .integ-grid { grid-template-columns: 1fr; }
-        .hero-stat { min-width: 100%; }
-        .nav-inner { padding: 0 16px; }
-        .quiz-option { padding: 14px; font-size: 13.5px; }
-        .case-metric-block { flex-direction: column; align-items: flex-start; }
-        .case-metric-nums { margin-top: 6px; }
-        .positioning-grid { grid-template-columns: 1fr; }
-      }
-    </style>
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVP5239R"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
-    <div class="trust-bar">⚙️ Built Inside a Real Law Firm's Marketing Operation · Now Available For Yours</div>
-
-    <nav class="nav-wrap">
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">
-                <div class="nav-logo-mark">CS</div>
-                <div>
-                    <div class="nav-logo-text">ClearSignal</div>
-                    <div class="nav-logo-sub">by Alchemist Mind Pros</div>
-                </div>
-            </a>
-            <div class="nav-links">
-                <a href="#why">Why ClearSignal</a>
-                <a href="#quiz">Take the Quiz</a>
-                <div class="nav-dropdown">
-                    <span class="nav-dropdown-trigger">Products <span class="nav-dropdown-caret">▼</span></span>
-                    <div class="nav-dropdown-menu">
-                        <a href="#clearsignal">ClearSignal Platform</a>
-                        <a href="#salescoach">AI Sales Coach</a>
-                        <a href="#checkin">CheckinApp</a>
-                    </div>
-                </div>
-                <a href="#process">Our Process</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#faq">FAQ</a>
-            </div>
-            <div style="display: flex; align-items: center; gap: 14px;">
-                <a href="#" class="nav-cta open-modal">🗓 Book a Demo</a>
-                <button class="nav-toggle" aria-label="Toggle menu">☰</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO -->
-    <header class="hero">
-        <div class="hero-grid-overlay"></div>
-        <div class="hero-inner">
-            <div class="hero-grid-row">
-                <div>
-                    <div class="builder-badge"><span class="dot"></span> Built by a law firm's own fractional CMO</div>
-                    <div class="hero-h1-intro">An AI-Powered Reporting Dashboard That:</div>
-                    <h1 class="hero-h1">
-                        Shows your true <br>
-                        <span class="rotating-wrap"><span class="rotating-line">cost per signed case</span></span>
-                    </h1>
-                    <p class="hero-h2">
-                        Built for <strong>law firms</strong> spending on Google, Meta, and LSA who still can't see which dollars actually turn into signed clients. ClearSignal connects your ad platforms, CRM, and intake calls into one live dashboard — automatically sending real outcome data back to your ad algorithms and coaching every consult call — so every budget decision is based on what's actually working.
-                    </p>
-
-                    <div class="hero-bullets">
-                        <div class="hero-bullet">
-                            <div class="hero-bullet-icon">🎯</div>
-                            <div class="hero-bullet-text"><strong>ClearSignal:</strong> Full attribution across every channel + offline conversion sync that trains Google &amp; Meta to find more clients, not just more leads</div>
-                        </div>
-                        <div class="hero-bullet">
-                            <div class="hero-bullet-icon">🤖</div>
-                            <div class="hero-bullet-text"><strong>AI Sales Coach:</strong> Every consult call automatically scored, coached, and turned into a playbook your intake team improves from</div>
-                        </div>
-                        <div class="hero-bullet">
-                            <div class="hero-bullet-icon">📋</div>
-                            <div class="hero-bullet-text"><strong>CheckinApp:</strong> Replace the lobby clipboard with a modern, instant digital check-in that syncs your CRM on arrival</div>
-                        </div>
-                        <div class="hero-bullet">
-                            <div class="hero-bullet-icon">🛡️</div>
-                            <div class="hero-bullet-text"><strong>Proven in Production:</strong> Not a concept pitch — running live inside real law firm marketing operations today</div>
-                        </div>
-                    </div>
-
-                    <div class="hero-ctas">
-                        <a href="#" class="btn-gold open-modal">📅 Book a Live Demo</a>
-                        <a href="#calculator" class="btn-ghost">🧮 See Your Hidden Number</a>
-                    </div>
-                    <div class="guarantee-strip">🔒 No rip-and-replace. Works alongside the CRM you already use.</div>
-
-                    <div class="urgency-bar">
-                        <span class="urgency-bar-icon">⚡</span>
-                        <div class="urgency-bar-text">Every month without proper attribution, your competitors compound a data advantage you can't easily buy back. <strong>Secure your market visibility today.</strong></div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="mock-card">
-                        <div class="mock-topbar">
-                            <div class="mock-title">📊 Channel Performance — Cost Per Signed Case</div>
-                            <div class="mock-pill">Live Sync</div>
-                        </div>
-                        <div class="mock-bars">
-                            <div class="mock-bar-row"><div class="mock-bar-label">Google Ads</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width: 42%; background: var(--teal);"></div></div><div class="mock-bar-val">$412</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label">Meta Ads</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width: 88%; background: var(--gold);"></div></div><div class="mock-bar-val">$890</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label">LSA</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width: 29%; background: var(--teal);"></div></div><div class="mock-bar-val">$285</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label">Organic</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width: 15%; background: var(--teal);"></div></div><div class="mock-bar-val">$140</div></div>
-                        </div>
-                        <div class="mock-stat-row">
-                            <div class="mock-stat"><div class="mock-stat-num">4.7</div><div class="mock-stat-label">Avg Coach Score</div></div>
-                            <div class="mock-stat"><div class="mock-stat-num">94%</div><div class="mock-stat-label">CRM Match Rate</div></div>
-                            <div class="mock-stat"><div class="mock-stat-num">-38%</div><div class="mock-stat-label">Blended CAC Drop</div></div>
-                        </div>
-                        <div class="ticker-wrap">
-                            <div class="ticker-track">
-                                <div class="ticker-item">📞 Call matching... <span>Success</span> (HubSpot Case #1084)</div>
-                                <div class="ticker-item">🤖 Call Scored: 4.8/5... Sent to Playbook</div>
-                                <div class="ticker-item">🌐 LSA Match GCLID... Syncing Platform Data</div>
-                                <div class="ticker-item">📞 Call matching... <span>Success</span> (HubSpot Case #1084)</div>
-                                <div class="ticker-item">🤖 Call Scored: 4.8/5... Sent to Playbook</div>
-                                <div class="ticker-item">🌐 LSA Match GCLID... Syncing Platform Data</div>
-                            </div>
-                        </div>
-                        <div class="mock-caption">Sample dashboard view — illustrative</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-stats">
-                <div class="hero-stat"><div class="hero-stat-num">$4.2M+</div><div class="hero-stat-label">Ad Spend Optimized</div></div>
-                <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Attribution Accuracy</div></div>
-                <div class="hero-stat"><div class="hero-stat-num">&lt; 14 Days</div><div class="hero-stat-label">Standard Onboarding</div></div>
-                <div class="hero-stat"><div class="hero-stat-num">24/7</div><div class="hero-stat-label">Data Engine Monitor</div></div>
-            </div>
-        </div>
-    </header>
-
-    <!-- PROOF STRIP -->
-    <div class="proof-strip">
-        <div class="proof-inner">
-            <p class="proof-label">Powering marketing operations for</p>
-            <div class="proof-logos">
-                <div class="proof-logo-card"><img class="proof-logo-img" src="assets/TSLG%20logo%20(3).png" alt="The Siegel Law Group"></div>
-                <div class="proof-logo-card"><img class="proof-logo-img proof-logo-abw" src="assets/ABW%20updated%20logo%20(1).png" alt="Attorney Brian White Injury Lawyer"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- PROBLEM -->
-    <section class="section problem-section" id="why">
-        <div class="section-inner">
-            <div class="section-tag">The Real Problem</div>
-            <h2 class="section-h2">Your Firm Is Flying Blind Between Ad Spend and Signed Clients</h2>
-            <p class="section-lead">Most firms can tell you what they spent. Almost none can tell you what actually worked. Sound familiar?</p>
-            <div class="problem-grid">
-                <div class="problem-card"><div class="problem-icon">💸</div><div class="problem-title">CPL Without Context</div><div class="problem-desc">You know what a lead costs. You have no idea which leads actually became signed cases, or which channel is quietly wasting your budget.</div></div>
-                <div class="problem-card"><div class="problem-icon">📞</div><div class="problem-title">Intake Is a Black Box</div><div class="problem-desc">No visibility into which consults are going well, which objections are killing deals, or which team member needs coaching.</div></div>
-                <div class="problem-card"><div class="problem-icon">📋</div><div class="problem-title">The Clipboard Problem</div><div class="problem-desc">Clients still filling out paper intake in your lobby — the first impression of your firm is stuck in 1995 while everything else has modernized.</div></div>
-                <div class="problem-card"><div class="problem-icon">🕳️</div><div class="problem-title">Leads Going Cold</div><div class="problem-desc">No structured handoff from "clicked the ad" to "confirmed appointment" — and every gap in that chain is a lead you paid for and lost.</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- QUIZ -->
-    <section class="quiz-section" id="quiz">
-        <div class="section-inner" style="text-align:center;">
-            <div class="section-tag">60-Second Self-Check</div>
-            <h2 class="section-h2" style="max-width: 700px; margin: 0 auto 16px;">Should You Book a Demo? Take the Quiz.</h2>
-            <p class="section-lead" style="margin: 0 auto;">Five quick questions. Most firms find at least one answer here surprises them.</p>
-        </div>
-
-        <div class="quiz-card">
-            <div class="quiz-progress-wrap">
-                <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quiz-progress-fill"></div></div>
-                <div class="quiz-progress-text" id="quiz-progress-text">Question 1 of 5</div>
-            </div>
-
-            <div class="quiz-step active" data-step="1">
-                <div class="quiz-q-text">Do you know your cost per SIGNED CASE — not just cost per lead — broken out by ad channel?</div>
-                <div class="quiz-options" data-question="1">
-                    <div class="quiz-option" data-points="3"><div class="quiz-option-dot"></div>Yes, exact numbers by channel</div>
-                    <div class="quiz-option" data-points="1"><div class="quiz-option-dot"></div>I have a rough idea</div>
-                    <div class="quiz-option" data-points="0"><div class="quiz-option-dot"></div>No, we only track cost per lead</div>
-                </div>
-            </div>
-
-            <div class="quiz-step" data-step="2">
-                <div class="quiz-q-text">Are you sending signed-case outcomes back to Google/Meta to improve ad targeting (offline conversion tracking)?</div>
-                <div class="quiz-options" data-question="2">
-                    <div class="quiz-option" data-points="3"><div class="quiz-option-dot"></div>Yes, fully automated</div>
-                    <div class="quiz-option" data-points="1"><div class="quiz-option-dot"></div>We've tried it manually or occasionally</div>
-                    <div class="quiz-option" data-points="0"><div class="quiz-option-dot"></div>Not sure what this is / No</div>
-                </div>
-            </div>
-
-            <div class="quiz-step" data-step="3">
-                <div class="quiz-q-text">Has anyone reviewed your team's actual consult calls in the last 30 days?</div>
-                <div class="quiz-options" data-question="3">
-                    <div class="quiz-option" data-points="3"><div class="quiz-option-dot"></div>Yes, every call gets reviewed</div>
-                    <div class="quiz-option" data-points="1"><div class="quiz-option-dot"></div>A handful, randomly</div>
-                    <div class="quiz-option" data-points="0"><div class="quiz-option-dot"></div>No</div>
-                </div>
-            </div>
-
-            <div class="quiz-step" data-step="4">
-                <div class="quiz-q-text">What does client check-in look like in your office today?</div>
-                <div class="quiz-options" data-question="4">
-                    <div class="quiz-option" data-points="3"><div class="quiz-option-dot"></div>Fully digital</div>
-                    <div class="quiz-option" data-points="1"><div class="quiz-option-dot"></div>A mix of paper and digital</div>
-                    <div class="quiz-option" data-points="0"><div class="quiz-option-dot"></div>Paper clipboard</div>
-                </div>
-            </div>
-
-            <div class="quiz-step" data-step="5">
-                <div class="quiz-q-text">If a lead goes cold between clicking your ad and showing up for a consult, would you know exactly why?</div>
-                <div class="quiz-options" data-question="5">
-                    <div class="quiz-option" data-points="3"><div class="quiz-option-dot"></div>Yes, we track every step</div>
-                    <div class="quiz-option" data-points="1"><div class="quiz-option-dot"></div>Sometimes</div>
-                    <div class="quiz-option" data-points="0"><div class="quiz-option-dot"></div>No</div>
-                </div>
-            </div>
-
-            <div class="quiz-back-row" id="quiz-back-row"><a href="#" id="quiz-back-link">← Back</a></div>
-
-            <div class="quiz-result" id="quiz-result">
-                <div class="quiz-result-score" id="quiz-score">0 / 15</div>
-                <div class="quiz-result-label" id="quiz-label">Your Result</div>
-                <div class="quiz-result-text" id="quiz-text"></div>
-                <div class="quiz-gaps" id="quiz-gaps"></div>
-                <a href="#" class="btn-gold open-modal" id="quiz-cta" style="margin-top: 20px;">🗓 Book a Demo</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CALCULATOR -->
-    <section class="calc-section" id="calculator">
-        <div class="calc-inner">
-            <div class="section-tag" style="color: var(--gold);">Free Tool — No Email Required</div>
-            <h2 class="section-h2" style="color: white; max-width: 640px;">What's Your Real Cost Per <span style="color:var(--gold);">Signed Case?</span></h2>
-            <p class="section-lead" style="color: rgba(255,255,255,0.7); max-width: 600px;">Most firms only track cost-per-lead. Plug in your rough numbers below and see the number that actually matters — the one ClearSignal tracks automatically, by channel, every month.</p>
-
-            <div class="calc-grid">
-                <div class="calc-card">
-                    <div class="calc-field"><label class="calc-label">Monthly Ad Spend ($)</label><input type="number" id="calc-spend" class="calc-input" value="15000" min="0"></div>
-                    <div class="calc-field"><label class="calc-label">Leads Generated Per Month</label><input type="number" id="calc-leads" class="calc-input" value="50" min="1"></div>
-                    <div class="calc-field"><label class="calc-label">Consult Show Rate (%)</label><input type="number" id="calc-show" class="calc-input" value="55" min="1" max="100"></div>
-                    <div class="calc-field" style="margin-bottom:0;"><label class="calc-label">Consult-to-Signed Close Rate (%)</label><input type="number" id="calc-close" class="calc-input" value="30" min="1" max="100"></div>
-                </div>
-
-                <div class="calc-result-card">
-                    <div class="calc-result-label">What You Probably Track</div>
-                    <div class="calc-result-num" id="result-cpl">$300</div>
-                    <div class="calc-result-sub">Cost Per Lead</div>
-                    <div class="calc-divider"></div>
-                    <div class="calc-result-label">What Actually Matters</div>
-                    <div class="calc-result-num highlight" id="result-cpsc">$1,818</div>
-                    <div class="calc-result-sub">Cost Per Signed Case — based on ~<span id="result-signed-count">8</span> signed cases this month</div>
-                    <div class="calc-divider"></div>
-                    <p class="calc-cta-note">Industry benchmark: most law firms see <strong>$1,500–$3,000+</strong> per signed case once every cost is properly attributed. If your number above looks lower, you're likely missing hidden costs — ad waste, untracked channels, or fully-loaded staff time. ClearSignal calculates this for real, broken out by Google, Meta, LSA, and every other channel — automatically, every week.</p>
-                    <a href="#" class="btn-gold open-modal" style="width:100%; justify-content:center; display:inline-flex;">🗓 Get My Real Numbers — Free Demo</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- POSITIONING -->
-    <section class="section" style="background: var(--gold-pale);">
-        <div class="section-inner">
-            <div class="section-tag">The Honest Comparison</div>
-            <h2 class="section-h2">What Are You Actually Comparing ClearSignal To?</h2>
-            <p class="section-lead">Every option has a real cost — most firms just haven't priced out what they're already losing.</p>
-            <div class="positioning-grid">
-                <div class="pos-card crm">
-                    <div class="pos-card-label">❌ Generic Legal CRM</div>
-                    <div class="pos-card-title">Case Management, Not Marketing Intelligence</div>
-                    <div class="pos-item">— Tracks cases, not ad performance</div>
-                    <div class="pos-item">— Doesn't connect to Google or Meta</div>
-                    <div class="pos-item">— No idea which channel produces clients</div>
-                    <div class="pos-item">— Zero visibility into sales call quality</div>
-                </div>
-                <div class="pos-card sheets">
-                    <div class="pos-card-label">⚠️ Spreadsheets &amp; Manual Tracking</div>
-                    <div class="pos-card-title">Slow, Error-Prone, Breaks at Scale</div>
-                    <div class="pos-item">— Hours of manual data pulling weekly</div>
-                    <div class="pos-item">— Numbers are stale by the time you see them</div>
-                    <div class="pos-item">— Nobody's listening to the actual calls</div>
-                    <div class="pos-item">— Falls apart the moment volume grows</div>
-                </div>
-                <div class="pos-card analyst">
-                    <div class="pos-card-label">⚠️ Hiring a Data/Marketing Analyst</div>
-                    <div class="pos-card-title">Expensive, Narrow, No Software</div>
-                    <div class="pos-item">— $70K–$100K+ salary before tools</div>
-                    <div class="pos-item">— Finds the problem, can't build the fix</div>
-                    <div class="pos-item">— One person, no AI coaching at scale</div>
-                    <div class="pos-item">— 3+ months before they're useful</div>
-                </div>
-                <div class="pos-card cs">
-                    <div class="winner-badge">✓ Built For This</div>
-                    <div class="pos-card-label">⚙️ ClearSignal</div>
-                    <div class="pos-card-title">Purpose-Built for Law Firm Growth</div>
-                    <div class="pos-item">— Every channel + your CRM, unified</div>
-                    <div class="pos-item">— AI scores and coaches every consult call</div>
-                    <div class="pos-item">— Modern digital intake &amp; check-in included</div>
-                    <div class="pos-item">— A fraction of one analyst's salary</div>
-                </div>
-            </div>
-
-            <div class="comp-table-wrap">
-                <table class="comp-table">
-                    <thead>
-                        <tr>
-                            <th class="label-col">Capability</th>
-                            <th class="cs-col">⚙️ ClearSignal Suite</th>
-                            <th class="other-col">Generic Legal CRM</th>
-                            <th class="other-col">Call Tracking Tool Alone</th>
-                            <th class="other-col">Spreadsheets / DIY</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td class="label-col">Multi-channel ad attribution</td><td class="cs-col"><span class="check">✓ Included</span></td><td class="other-col"><span class="cross">✗ Not offered</span></td><td class="other-col"><span class="partial">⚠ Calls only</span></td><td class="other-col"><span class="cross">✗ Manual</span></td></tr>
-                        <tr><td class="label-col">Signed-case data source</td><td class="cs-col"><span class="check">✓ Pulled directly from your CRM</span></td><td class="other-col"><span class="partial">⚠ Self-reported, manual entry</span></td><td class="other-col"><span class="cross">✗ Not tracked</span></td><td class="other-col"><span class="cross">✗ Manually compiled</span></td></tr>
-                        <tr><td class="label-col">AI call scoring &amp; coaching</td><td class="cs-col"><span class="check">✓ Every call</span></td><td class="other-col"><span class="cross">✗ Not offered</span></td><td class="other-col"><span class="cross">✗ Not offered</span></td><td class="other-col"><span class="cross">✗ Not possible</span></td></tr>
-                        <tr><td class="label-col">Native CRM sync</td><td class="cs-col"><span class="check">✓ HubSpot, Salesforce, Lead Docket &amp; more</span></td><td class="other-col"><span class="check">✓ It is the CRM</span></td><td class="other-col"><span class="partial">⚠ Limited</span></td><td class="other-col"><span class="cross">✗ None</span></td></tr>
-                        <tr><td class="label-col">In-office digital check-in</td><td class="cs-col"><span class="check">✓ CheckinApp included</span></td><td class="other-col"><span class="cross">✗ Not offered</span></td><td class="other-col"><span class="cross">✗ Not offered</span></td><td class="other-col"><span class="cross">✗ Paper clipboard</span></td></tr>
-                        <tr><td class="label-col">Built specifically for legal intake</td><td class="cs-col"><span class="check">✓ Yes, from day one</span></td><td class="other-col"><span class="partial">⚠ General practice mgmt</span></td><td class="other-col"><span class="cross">✗ Industry-agnostic</span></td><td class="other-col"><span class="cross">✗ N/A</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-            <p class="comp-disclaimer">Comparisons reflect general category capabilities as of 2026 and are not a statement about any specific competing product. Always confirm current features directly with any vendor you're evaluating.</p>
-        </div>
-    </section>
-
-    <!-- PRODUCTS -->
-    <section id="products">
-        <div style="text-align:center; padding: 76px 24px 0;">
-            <div class="section-tag">The ClearSignal Suite</div>
-            <h2 class="section-h2" style="max-width:700px; margin:0 auto 16px;">Three Tools. One System. Built for the Whole Client Journey.</h2>
-            <p class="section-lead" style="margin:0 auto;">From the first click on an ad to the moment a client signs — ClearSignal covers the entire path, not just one piece of it.</p>
-        </div>
-
-        <div class="product-section" id="clearsignal">
-            <div class="product-row">
-                <div>
-                    <div class="product-eyebrow" style="background: rgba(27,169,140,0.12); color: #0f7a64;">⚙️ Core Platform</div>
-                    <h3 class="product-h3">ClearSignal</h3>
-                    <p class="product-desc">The single source of truth between your ad spend and your signed cases. Every channel, every lead source, every consult call — connected, scored, and reported automatically using outcome data sourced directly from your own CRM, not a model or an estimate.</p>
-                    <div class="product-features">
-                        <div class="product-feature"><span class="pf-check">✅</span> Multi-channel attribution: Google, Meta, LSA, CallRail &amp; more</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Native sync with your existing CRM (HubSpot, Salesforce, Lead Docket &amp; others)</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Signed-case data pulled directly from your CRM's system of record — not modeled or inferred</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Automated client-ready reporting, no spreadsheets required</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Local intelligence &amp; brand monitoring built in</div>
-                    </div>
-                    <div class="product-note">For personal injury firms: includes a hospital lien tracking module — built for exactly this kind of case-volume complexity.</div>
-                    <details class="standout-card">
-                        <summary class="standout-summary">
-                            <div class="standout-icon">🔁</div>
-                            <div style="flex:1;">
-                                <div class="standout-label-row"><span class="standout-label">Standout Feature</span><span class="standout-chevron">+</span></div>
-                                <div class="standout-summary-text"><strong>Offline conversion sync</strong> — ClearSignal sends signed-case outcomes back to Google and Meta automatically, training their bidding algorithms to find more clients like your best ones, not just more cheap leads.</div>
-                            </div>
-                        </summary>
-                        <div class="standout-expanded">
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">What It Means</div><div class="standout-expanded-text">Google and Meta normally only see a "lead" or "call" event — they have no idea which of those ever became a paying client. ClearSignal connects to their offline conversion / Conversions API and automatically uploads the real outcome from your CRM, tied back to the original click.</div></div>
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">What Problem It Solves</div><div class="standout-expanded-text">Without this, your ad platforms keep optimizing for whatever's cheap to generate — form fills, calls — even if those leads rarely turn into signed cases. You end up paying to attract more of exactly the wrong kind of lead.</div></div>
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">Why It's Important</div><div class="standout-expanded-text">This is the one lever that compounds. Most fixes are one-time — a better landing page, a tighter ad set. This keeps improving every month as more signed-case data flows back in, which is exactly why it's the feature most CMOs get excited about once they understand it.</div></div>
-                        </div>
-                    </details>
-                </div>
-                <div class="product-visual">
-                    <div class="clearsignal-visual">
-                        <div class="mock-topbar"><div class="mock-title" style="color:white;">📊 Channel Performance</div><div class="mock-pill">Live</div></div>
-                        <div class="mock-bars">
-                            <div class="mock-bar-row"><div class="mock-bar-label" style="color:rgba(255,255,255,0.6);">Google</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width:58%; background: var(--teal);"></div></div><div class="mock-bar-val">$1,820</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label" style="color:rgba(255,255,255,0.6);">Meta</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width:84%; background: var(--gold);"></div></div><div class="mock-bar-val">$2,640</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label" style="color:rgba(255,255,255,0.6);">LSA</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width:48%; background: var(--teal);"></div></div><div class="mock-bar-val">$1,510</div></div>
-                        </div>
-                        <div class="mock-stat-row">
-                            <div class="mock-stat"><div class="mock-stat-num">$1,890</div><div class="mock-stat-label">Blended CPSC</div></div>
-                            <div class="mock-stat"><div class="mock-stat-num">38%</div><div class="mock-stat-label">Conversion Rate</div></div>
-                            <div class="mock-stat"><div class="mock-stat-num">6</div><div class="mock-stat-label">Sources Unified</div></div>
-                        </div>
-                        <div class="mock-caption">Sample dashboard view — illustrative</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-section" id="salescoach" style="background: var(--cream);">
-            <div class="product-row reverse">
-                <div>
-                    <div class="product-eyebrow" style="background: rgba(201,162,39,0.15); color: var(--gold-dark);">🤖 AI-Powered</div>
-                    <h3 class="product-h3">AI Sales Coach</h3>
-                    <p class="product-desc">No visibility into which consults go well, or which objections are killing deals? Submit the call transcript or recording — manually, or through your existing workflow — and it gets scored and coached automatically, so you're not relying on luck or memory to know how your team is actually performing.</p>
-                    <div class="product-features">
-                        <div class="product-feature"><span class="pf-check">✅</span> Every call scored on rapport, discovery, objection handling, and close</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Plain-language coaching note — what a top closer would've said differently</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Objection playbook — your team's most common objections, and what's working</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Rep leaderboard and goal tracking built in</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Works with whatever call recording or transcript source you already use</div>
-                    </div>
-                    <div class="product-note">Pairs natively with ClearSignal — scores tie directly back to which channel produced the call, and whether it converted.</div>
-                    <details class="standout-card">
-                        <summary class="standout-summary">
-                            <div class="standout-icon">💡</div>
-                            <div style="flex:1;">
-                                <div class="standout-label-row"><span class="standout-label">Standout Feature</span><span class="standout-chevron">+</span></div>
-                                <div class="standout-summary-text"><strong>The coaching note</strong> — not just a score. Every call gets a plain-language note on exactly what a top closer would've said differently, at the exact moment it mattered.</div>
-                            </div>
-                        </summary>
-                        <div class="standout-expanded">
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">What It Means</div><div class="standout-expanded-text">Past the 1-5 scores on rapport, discovery, and close, every call gets a short written note pointing to the specific moment things went sideways — and what a strong closer would have said instead, in that exact spot.</div></div>
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">What Problem It Solves</div><div class="standout-expanded-text">A number alone doesn't teach anyone anything. Most firms either don't review calls at all, or a manager spot-checks a handful with no consistent structure — feedback ends up rare, inconsistent, or nonexistent. This turns every single call into a training moment automatically.</div></div>
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">Why It's Important</div><div class="standout-expanded-text">This is what makes it a coaching tool instead of a report card. Reps actually improve because they're told exactly what to say differently next time — not just where they fell short.</div></div>
-                        </div>
-                    </details>
-                </div>
-                <div class="product-visual">
-                    <div class="clearsignal-visual">
-                        <div class="mock-topbar"><div class="mock-title" style="color:white;">🤖 AI Sales Coach — Latest Call</div><div class="mock-pill">Scored</div></div>
-                        <div style="background: rgba(255,255,255,0.06); border-radius: 12px; padding: 16px; margin-bottom: 14px;">
-                            <div style="font-size:11px; color: rgba(255,255,255,0.5); margin-bottom: 8px;">OVERALL SCORE</div>
-                            <div style="display:flex; align-items:baseline; gap:8px;"><span style="font-family:'Sora'; font-weight:800; font-size:30px; color:var(--gold);">4.2</span><span style="font-size:12px; color:rgba(255,255,255,0.4);">/ 5.0</span></div>
-                        </div>
-                        <div class="mock-bars">
-                            <div class="mock-bar-row"><div class="mock-bar-label" style="color:rgba(255,255,255,0.6);">Discovery</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width:80%; background: var(--teal);"></div></div><div class="mock-bar-val">4.0</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label" style="color:rgba(255,255,255,0.6);">Objection</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width:60%; background: var(--gold);"></div></div><div class="mock-bar-val">3.0</div></div>
-                            <div class="mock-bar-row"><div class="mock-bar-label" style="color:rgba(255,255,255,0.6);">Close</div><div class="mock-bar-track"><div class="mock-bar-fill" style="width:90%; background: var(--teal);"></div></div><div class="mock-bar-val">4.5</div></div>
-                        </div>
-                        <div class="mock-caption" style="color:rgba(255,255,255,0.4);">Sample scorecard view — illustrative</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="product-section" id="checkin">
-            <div class="product-row">
-                <div>
-                    <div class="product-eyebrow" style="background: rgba(220,38,38,0.1); color: #dc2626;">🆕 The Differentiator</div>
-                    <h3 class="product-h3">CheckinApp</h3>
-                    <p class="product-desc">Your clients still sign a clipboard in your lobby. We haven't found another tool built specifically for this in the legal space — which means right now, it's a real edge over every firm still handing out a pen.</p>
-                    <div class="product-features">
-                        <div class="product-feature"><span class="pf-check">✅</span> Tablet check-in replaces paper sign-in sheets entirely</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Clients complete remaining intake while they wait — not after</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> Front desk gets a real-time notification the moment someone checks in</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> CRM updates instantly — no one re-keys anything</div>
-                        <div class="product-feature"><span class="pf-check">✅</span> A first impression that signals "this firm is different"</div>
-                    </div>
-                    <span class="trial-badge">✓ 14-Day Free Trial Available</span>
-                    <details class="standout-card" style="margin-top: 16px;">
-                        <summary class="standout-summary">
-                            <div class="standout-icon">🥇</div>
-                            <div style="flex:1;">
-                                <div class="standout-label-row"><span class="standout-label">Standout Feature</span><span class="standout-chevron">+</span></div>
-                                <div class="standout-summary-text"><strong>First-mover edge</strong> — we haven't found another tool built specifically for in-office digital check-in in the legal space. Right now, this is a real differentiator over every firm still handing out a clipboard.</div>
-                            </div>
-                        </summary>
-                        <div class="standout-expanded">
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">What It Means</div><div class="standout-expanded-text">A tablet at your front desk replaces the paper sign-in sheet. Clients tap to check in, finish any remaining intake while they wait, and your front desk gets a real-time notification — no clipboard, no re-keying anything later.</div></div>
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">What Problem It Solves</div><div class="standout-expanded-text">Manual intake creates front-desk bottlenecks, illegible handwriting that someone has to decipher and re-type, and a first impression that feels dated the moment a client walks in.</div></div>
-                            <div class="standout-expanded-block"><div class="standout-expanded-label">Why It's Important</div><div class="standout-expanded-text">First impressions disproportionately shape how much a prospective client trusts a professional service before they've even met the attorney. Being the modern option in your market is a quiet edge — the kind clients mention to friends without you having to ask.</div></div>
-                        </div>
-                    </details>
-                </div>
-                <div class="product-visual">
-                    <div class="checkin-visual">
-                        <div class="checkin-kiosk">
-                            <div class="kiosk-screen">
-                                <div class="kiosk-welcome">Welcome to The Firm</div>
-                                <div class="kiosk-sub">Please check in for your appointment</div>
-                                <div class="kiosk-btn">📋 Tap to Check In</div>
-                            </div>
-                        </div>
-                        <div style="font-size:13px; color:#64748b; text-align:center;">Replaces the clipboard your clients sign today — illustrative interface</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COMPOUNDING / OFFLINE CONVERSIONS -->
-    <section class="section" style="background: var(--navy-dark);">
-        <div class="section-inner">
-            <div class="section-tag" style="color: var(--gold);">What CEOs and CMOs Actually Care About</div>
-            <h2 class="section-h2" style="color: white; max-width: 800px;">Most Firms Train Google to Find More Leads. ClearSignal Trains It to Find More Clients.</h2>
-            <p class="section-lead" style="color: rgba(255,255,255,0.7); max-width: 720px;">Google and Meta's bidding algorithms only optimize for what you tell them matters. If the only signal you're sending back is "form filled" or "call received," that's exactly what the algorithm will keep finding you more of — including plenty of people who were never going to become paying clients. And because the signed-case data ClearSignal sends back is pulled directly from your own CRM — not modeled, not estimated — what you're feeding the algorithm is as accurate as your own system of record.</p>
-
-            <div class="compound-steps-grid">
-                <div class="compound-step"><div class="compound-step-num">1</div><div class="compound-step-title">Lead or Call Happens</div><div class="compound-step-text">The ad platform sees a click and a basic conversion event.</div></div>
-                <div class="compound-step"><div class="compound-step-num">2</div><div class="compound-step-title">Case Gets Signed (or Doesn't)</div><div class="compound-step-text">The real outcome lives in your CRM — your actual system of record, not a guess.</div></div>
-                <div class="compound-step"><div class="compound-step-num">3</div><div class="compound-step-title">ClearSignal Sends It Back</div><div class="compound-step-text">Signed-case outcomes flow automatically into Google's and Meta's offline conversion APIs.</div></div>
-                <div class="compound-step"><div class="compound-step-num">4</div><div class="compound-step-title">The Algorithm Gets Smarter</div><div class="compound-step-text">It starts finding more people who look like your best clients — not just more cheap leads.</div></div>
-            </div>
-
-            <div class="compound-outcomes-grid">
-                <div class="compound-outcome"><div class="compound-outcome-h">Higher CVR</div><div class="compound-outcome-t">More of your traffic converts into leads worth pursuing, not just more volume.</div></div>
-                <div class="compound-outcome"><div class="compound-outcome-h">Lower CAC Over Time</div><div class="compound-outcome-t">Cost per signed case trends down as the algorithm gets better at finding the right people — without increasing spend.</div></div>
-                <div class="compound-outcome"><div class="compound-outcome-h">Compounding, Not One-Time</div><div class="compound-outcome-t">This keeps improving month over month as more signed-case data flows back in — it doesn't plateau like a one-time campaign fix.</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BUNDLE / À LA CARTE -->
-    <section class="section" style="background: var(--gold-pale);">
-        <div class="section-inner">
-            <div class="section-tag">How You Buy It</div>
-            <h2 class="section-h2">Together as One Suite, or Separately — Your Call</h2>
-            <p class="section-lead">Most firms get the most value running all three together, since they're built to feed each other. But none of it is locked behind a bundle — each tool stands on its own if that's a better fit for where your firm is today.</p>
-
-            <div class="bundle-cards-grid">
-                <div style="background: var(--navy-dark); border-radius: 18px; padding: 32px;">
-                    <div style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background: rgba(201,162,39,0.2); color: var(--gold); padding: 4px 10px; border-radius: 6px; margin-bottom: 16px;">Most Firms Choose This</div>
-                    <div style="font-family:'Sora'; font-weight:800; font-size: 22px; color: white; margin-bottom: 10px;">The Complete Suite</div>
-                    <div style="font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 18px;">ClearSignal + AI Sales Coach + CheckinApp, working as one connected system from first click to signed case — at a lower combined cost than buying all three separately.</div>
-                    <a href="#pricing" class="li-link" style="background: var(--gold); color: white; border: none;">See Suite Pricing →</a>
-                </div>
-                <div style="background: white; border: 1px solid var(--gold-light); border-radius: 18px; padding: 32px;">
-                    <div style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background: #f0f4f8; color: var(--navy); padding: 4px 10px; border-radius: 6px; margin-bottom: 16px;">Also Available</div>
-                    <div style="font-family:'Sora'; font-weight:800; font-size: 22px; color: var(--navy-dark); margin-bottom: 10px;">Any Tool, Standalone</div>
-                    <div style="font-size: 14px; color: #64748b; line-height: 1.65; margin-bottom: 18px;">Only need AI Sales Coach right now? Just want to fix the lobby with CheckinApp? Each tool is fully usable on its own — start where your firm actually needs help today, expand later if it makes sense.</div>
-                    <a href="#pricing" class="li-link">See Individual Pricing →</a>
-                </div>
-            </div>
-
-            <div style="margin-top: 24px; background: white; border: 1px solid var(--gold-light); border-radius: 16px; padding: 26px 30px; display:flex; align-items:flex-start; gap:18px;">
-                <div style="font-size: 24px; flex-shrink:0;">🎛️</div>
-                <div>
-                    <div style="font-family:'Sora'; font-weight:700; font-size: 15px; color: var(--navy-dark); margin-bottom: 6px;">Customized to How Your Firm Actually Works</div>
-                    <div style="font-size: 13.5px; color: #64748b; line-height: 1.65;">None of this ships as a rigid template. We tailor the terminology, the goals each tool tracks, and how it maps to your specific client journey — whether that's a seminar-to-consult funnel for estate planning or an intake-to-retainer flow for PI. The system adapts to your firm, not the other way around.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- INTEGRATIONS -->
-    <section class="section" style="background: var(--navy-dark);" id="integrations">
-        <div class="section-inner">
-            <div class="section-tag" style="color: var(--gold);">No Rip-and-Replace</div>
-            <h2 class="section-h2" style="color: white;">Connects to Whatever You're Already Running</h2>
-            <p class="section-lead" style="color: rgba(255,255,255,0.7);">ClearSignal isn't a closed system. It's built to plug into the CRM, call tracking, and intake tools your firm already uses — and if you're running something more obscure, our engineers build the connection.</p>
-
-            <div class="integ-grid">
-                <div class="integ-card"><div class="integ-card-name">HubSpot</div><div class="integ-card-sub">Native two-way sync</div></div>
-                <div class="integ-card"><div class="integ-card-name">Salesforce</div><div class="integ-card-sub">Native two-way sync</div></div>
-                <div class="integ-card"><div class="integ-card-name">Lead Docket</div><div class="integ-card-sub">Native two-way sync</div></div>
-                <div class="integ-card accent"><div class="integ-card-name">+ Anything Else</div><div class="integ-card-sub">Any tool with API access</div></div>
-            </div>
-
-            <div style="margin-top: 32px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; display:flex; align-items:flex-start; gap:18px;">
-                <div style="font-size: 26px; flex-shrink:0;">🔧</div>
-                <div>
-                    <div style="font-family:'Sora'; font-weight:700; font-size: 16px; color: white; margin-bottom: 8px;">Real Engineering, Not Just Pre-Built Connectors</div>
-                    <div style="font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7;">Beyond the integrations listed above, our engineering team builds custom automations using third-party platforms and proprietary tooling to connect call tracking systems, practice management software, and ad platforms most "all-in-one" tools simply don't support. If it has an API, we can very likely connect it — and if it doesn't, we'll tell you that honestly on the call.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- STACK CONSOLIDATION -->
-    <section class="section stack-section">
-        <div class="section-inner">
-            <div class="section-tag">Consolidate Your Stack</div>
-            <h2 class="section-h2">What You Might Be Paying For Right Now — That This Replaces</h2>
-            <p class="section-lead">Most firms are stitching together several disconnected tools (and a lot of manual hours) to do what ClearSignal does natively. Here's the honest mapping.</p>
-
-            <div class="stack-table">
-                <div class="stack-row"><div class="stack-current"><strong>Call tracking subscription</strong>Tracks calls, but isn't tied to your ad spend or CRM</div><div class="stack-arrow">→</div><div class="stack-new">⚙️ Built into ClearSignal</div></div>
-                <div class="stack-row"><div class="stack-current"><strong>A contracted analyst or hours of manual reporting</strong>Pulling numbers into spreadsheets every week</div><div class="stack-arrow">→</div><div class="stack-new">⚙️ Automated reporting, included</div></div>
-                <div class="stack-row"><div class="stack-current"><strong>Call coaching or QA, done by you (or not at all)</strong>Listening to calls yourself, or skipping it entirely</div><div class="stack-arrow">→</div><div class="stack-new">🤖 AI Sales Coach, every call</div></div>
-                <div class="stack-row"><div class="stack-current"><strong>Paper sign-in clipboard</strong>Manual, slow, makes a dated first impression</div><div class="stack-arrow">→</div><div class="stack-new">🆕 CheckinApp</div></div>
-            </div>
-            <p class="stack-note">Many firms find this consolidates several overlapping subscriptions — and a meaningful chunk of manual hours each week — into one connected system. Your exact savings depend on what you're running today; we'll map it out on your demo call.</p>
-        </div>
-    </section>
-
-    <!-- PROOF / RESULTS -->
-    <section class="section results-section" id="proof">
-        <div class="section-inner">
-            <div class="section-tag">Proven Results</div>
-            <h2 class="section-h2">Built Solving This Exact Problem, for a Real Firm</h2>
-            <p class="section-lead">ClearSignal wasn't designed in a vacuum. The attribution and reporting layer was built and proven first, inside an active law firm's marketing operation.</p>
-
-            <div class="case-spotlight">
-                <div>
-                    <div class="case-industry-tag">⚖️ Estate Planning Law Firm</div>
-                    <div class="case-spotlight-title">Cost Per Lead Cut in Half. Seminars Filling 3.5x Faster.</div>
-                    <div class="case-spotlight-quote">"Tre cut our lead costs in half while doubling our seminar fills. The ROI was immediate and incredible."</div>
-                    <div class="case-spotlight-author">— Jennifer Simon, Estate Planning Law Firm</div>
-                </div>
-                <div class="case-metric-stack">
-                    <div class="case-metric-block"><div class="case-metric-label">Cost Per Lead</div><div class="case-metric-nums"><span class="case-metric-before">$41.62</span><span class="case-metric-after">$20.90</span></div></div>
-                    <div class="case-metric-block"><div class="case-metric-label">Seminar Fill Time</div><div class="case-metric-nums"><span class="case-metric-before">2 Weeks</span><span class="case-metric-after">4 Days</span></div></div>
-                </div>
-            </div>
-
-            <div class="secondary-proof">
-                <div class="proof-mini-card">
-                    <div class="proof-mini-tag">⚖️ Personal Injury Practice</div>
-                    <div class="proof-mini-text">Built and running a full multi-channel attribution system alongside a custom hospital lien tracking module — designed for the case-volume complexity high-intake PI firms deal with daily.</div>
-                </div>
-                <div class="proof-mini-card">
-                    <div class="proof-mini-tag">🤖 AI-Powered, Not AI-Hype</div>
-                    <div class="proof-mini-text">The AI Sales Coach isn't a generic wrapper on ChatGPT — it's a fixed coaching rubric scoring rapport, discovery, objection handling, and close on every call, with a human review loop to keep it calibrated over time.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOUNDER -->
-    <section class="founder-section" id="founder">
-        <div class="founder-inner">
-            <div class="founder-photo-wrap">
-                <div class="founder-photo"><img src="assets/tre-headshot.jpeg" alt="Tre Forte, Founder of Alchemist Mind Pros"></div>
-                <div class="founder-photo-badge">🏈 Built It<br>Myself</div>
-            </div>
-            <div>
-                <div class="section-tag">Why I Built This</div>
-                <div class="founder-name">Tre Forte</div>
-                <div class="founder-title">Founder, Alchemist Mind Pros · Fractional CMO · Builder of ClearSignal</div>
-                <div class="founder-quote">"I didn't build ClearSignal to sell software. I built it because I was the one drowning in spreadsheets trying to prove which ad dollar actually turned into a signed case — for my own clients. Once it worked, I realized every law firm has this exact same blind spot."</div>
-                <p class="founder-p">As a Fractional CMO managing real marketing operations for firms like The Siegel Law Group, I needed a system that connected ad spend, intake, and sales calls into one place — and nothing on the market did it for legal. So I built it.</p>
-                <p class="founder-p">$4.2M+ in ad spend optimized, a collegiate football background at Ohio State that taught me the details separate good from great, and a decade of process optimization across legal, home services, and healthcare — ClearSignal is the system I wished existed when I started, now built and proven.</p>
-                <div class="founder-links">
-                    <a href="https://www.linkedin.com/in/tre-forte-9579a4154/" target="_blank" class="li-link">💼 Connect on LinkedIn</a>
-                    <a href="#" class="li-link open-modal">🗓 Book a Demo With Tre</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS / ROADMAP -->
-    <section class="process-section" id="process">
-        <div class="section-inner" style="text-align:center;">
-            <div class="section-tag">How We Work Together</div>
-            <h2 class="section-h2" style="max-width: 700px; margin: 0 auto 16px;">From First Call to Fully Live</h2>
-            <p class="section-lead" style="margin: 0 auto;">A clear, guided path — not a black box. Here's exactly what happens after you reach out.</p>
-        </div>
-
-        <div class="process-timeline">
-            <div class="process-step">
-                <div class="process-num">1</div>
-                <div class="process-content">
-                    <div class="process-when">Day 0</div>
-                    <div class="process-title">Discovery Call with Tre</div>
-                    <div class="process-desc">We diagnose your specific gaps live and map which tools actually fit your firm — not a generic pitch.</div>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="process-num">2</div>
-                <div class="process-content">
-                    <div class="process-when">If Needed</div>
-                    <div class="process-title">Custom Demo with Tre</div>
-                    <div class="process-desc">If we don't land on a decision the first call, a deeper walkthrough using your own numbers and use case.</div>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="process-num">3</div>
-                <div class="process-content">
-                    <div class="process-when">Onboarding</div>
-                    <div class="process-title">Onboarding Meeting</div>
-                    <div class="process-desc">We collect access, credentials, and your goals for each tool — the foundation for a clean setup.</div>
-                </div>
-            </div>
-            <div class="process-step">
-                <div class="process-num">4</div>
-                <div class="process-content">
-                    <div class="process-when">Implementation</div>
-                    <div class="process-title">Implementation Meeting + Training Session</div>
-                    <div class="process-desc">Our engineers wire up your integrations, then walk your team through the platform so everyone's ready on day one.</div>
-                </div>
-            </div>
-            <div class="process-step process-final">
-                <div class="process-num">5</div>
-                <div class="process-content">
-                    <div class="process-when">Ongoing</div>
-                    <div class="process-title">Ongoing Support with Your Account Manager</div>
-                    <div class="process-desc">You're live, with a dedicated point of contact — not a ticket queue — for everything that comes up after launch.</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="process-badge">
-            <div class="process-badge-num">~10 Days</div>
-            <div class="process-badge-text"><strong>Typical time to launch</strong> from discovery call to fully live, depending on how quickly we get access, credentials, and tool details from your team.</div>
-        </div>
-    </section>
-
-    <!-- PRICING -->
-    <section class="pricing-section" id="pricing">
-        <div class="section-inner">
-            <div class="section-tag">Investment</div>
-            <h2 class="section-h2">Pricing Built for Real Firms, Not Enterprise Bloat</h2>
-            <p class="section-lead">Run all three tools together for the best combined value, or pick just the one your firm needs most right now. Every firm's integrations are a little different — we'll get you an exact number on a 15-minute call.</p>
-
-            <div style="background: var(--navy-dark); border-radius: 20px; padding: 40px; margin-top: 40px; display:grid; grid-template-columns: 1.6fr 1fr; gap: 36px; align-items: center;">
-                <div>
-                    <div style="display:inline-block; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; background: rgba(201,162,39,0.2); color: var(--gold); padding: 5px 12px; border-radius: 6px; margin-bottom: 16px;">Most Firms Choose This</div>
-                    <div style="font-family:'Sora'; font-weight:800; font-size: 26px; color: white; margin-bottom: 10px;">The Complete Suite</div>
-                    <div style="font-size: 14.5px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 18px;">ClearSignal + AI Sales Coach + CheckinApp, running as one connected system — for less than buying all three separately.</div>
-                    <div style="display:flex; flex-wrap:wrap; gap: 10px;">
-                        <span style="font-size:13px; color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.07); padding:6px 12px; border-radius:8px;">✓ Full attribution</span>
-                        <span style="font-size:13px; color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.07); padding:6px 12px; border-radius:8px;">✓ AI call coaching</span>
-                        <span style="font-size:13px; color:rgba(255,255,255,0.8); background:rgba(255,255,255,0.07); padding:6px 12px; border-radius:8px;">✓ Digital check-in</span>
-                    </div>
-                </div>
-                <div style="text-align:center; background: rgba(255,255,255,0.05); border: 1px solid rgba(201,162,39,0.3); border-radius: 16px; padding: 28px;">
-                    <div style="font-family:'Sora'; font-weight:800; font-size: 32px; color: var(--gold);">$1,297<span style="font-size:14px; font-weight:500; color:rgba(255,255,255,0.5);">/mo starting at</span></div>
-                    <a href="#" class="btn-gold open-modal" style="width:100%; justify-content:center; display:inline-flex; margin-top: 16px;">🗓 Book Suite Demo</a>
-                </div>
-            </div>
-
-            <p style="text-align:center; font-size: 13px; color: #94a3b8; margin-top: 18px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600;">— or build your own stack —</p>
-
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-tier-badge">ClearSignal — Core</div>
-                    <div class="price-tier-name">Attribution Starter</div>
-                    <div class="price-amount">$397<span>/mo starting at</span></div>
-                    <div class="price-desc">For firms who just need to know what's actually working before scaling spend.</div>
-                    <div class="price-features">
-                        <div class="price-feature">✅ Single-channel attribution dashboard</div>
-                        <div class="price-feature">✅ One CRM integration</div>
-                        <div class="price-feature">✅ Automated weekly reporting</div>
-                        <div class="price-feature">✅ Local intelligence</div>
-                    </div>
-                    <a href="#" class="price-cta outline open-modal">Talk to Us</a>
-                </div>
-
-                <div class="price-card featured">
-                    <div class="price-tier-badge">ClearSignal — Growth</div>
-                    <div class="price-tier-name">Full Attribution</div>
-                    <div class="price-amount">$797<span>/mo starting at</span></div>
-                    <div class="price-desc">Every channel connected, fully automated. The complete attribution picture, ad to signed case.</div>
-                    <div class="price-features">
-                        <div class="price-feature">✅ Everything in Core</div>
-                        <div class="price-feature">✅ Multi-channel attribution (Google, Meta, LSA, CallRail)</div>
-                        <div class="price-feature">✅ Native CRM sync (HubSpot, Salesforce, Lead Docket)</div>
-                        <div class="price-feature">✅ Custom-built integrations available</div>
-                    </div>
-                    <a href="#" class="price-cta solid open-modal">Book a Demo</a>
-                </div>
-
-                <div class="price-card">
-                    <div class="price-tier-badge">ClearSignal — Enterprise</div>
-                    <div class="price-tier-name">Full Suite</div>
-                    <div class="price-amount">Custom<span>pricing</span></div>
-                    <div class="price-desc">Everything in Growth, plus white-label reporting and PI-specific tooling.</div>
-                    <div class="price-features">
-                        <div class="price-feature">✅ Everything in Growth</div>
-                        <div class="price-feature">✅ Hospital lien tracking (PI firms)</div>
-                        <div class="price-feature">✅ White-label client reporting</div>
-                        <div class="price-feature">✅ Priority support &amp; custom integrations</div>
-                    </div>
-                    <a href="#" class="price-cta outline open-modal">Talk to Us</a>
-                </div>
-            </div>
-
-            <div class="addon-row">
-                <div class="addon-card">
-                    <div class="addon-top"><div><div class="addon-name">AI Sales Coach Standalone</div><div class="addon-desc">Includes up to 150 scored calls/mo, then $3/call</div></div><div class="addon-price">$497/mo</div></div>
-                </div>
-                <div class="addon-card">
-                    <div class="addon-top"><div><div class="addon-name">CheckinApp Standalone</div><div class="addon-desc">Modernize your lobby without the full suite.</div></div><div class="addon-price">$247/mo</div></div>
-                    <span class="trial-badge">✓ 14-Day Free Trial</span>
-                </div>
-            </div>
-
-            <div style="margin-top: 48px;">
-                <div style="font-family:'Sora'; font-weight:700; font-size: 17px; color: var(--navy-dark); margin-bottom: 6px;">Ongoing Support &amp; Maintenance</div>
-                <p style="font-size: 13.5px; color: #64748b; margin-bottom: 22px;">Every plan includes a dedicated account manager. The difference is how proactive you want that relationship to be.</p>
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div style="background: var(--cream); border: 1px solid #f0ece4; border-radius: 14px; padding: 24px;">
-                        <div style="font-family:'Sora'; font-weight:700; font-size: 15px; color: var(--navy-dark); margin-bottom: 8px;">Basic Support</div>
-                        <div style="font-size: 13px; color: #64748b; line-height: 1.6;">Ad hoc requests and access to office hours when something needs attention. Reactive, but always covered.</div>
-                    </div>
-                    <div style="background: var(--gold-pale); border: 1px solid var(--gold-light); border-radius: 14px; padding: 24px;">
-                        <div style="font-family:'Sora'; font-weight:700; font-size: 15px; color: var(--navy-dark); margin-bottom: 8px;">Tiered Support</div>
-                        <div style="font-size: 13px; color: #64748b; line-height: 1.6;">Everything in Basic, plus a recurring monthly check-in with your account manager to review progress, find ways to get more out of the tools you already have, and hear about new features and betas before they're widely released.</div>
-                    </div>
-                </div>
-                <p style="font-size: 12.5px; color: #94a3b8; margin-top: 14px; font-style: italic;">Support tier is scoped alongside your tool selection on the demo call — exact pricing depends on which tools and tier you choose.</p>
-            </div>
-
-            <p class="pricing-footnote">ClearSignal and AI Sales Coach are demo-only, not self-serve trials — both are wired into your specific ad accounts, CRM, and call data, so a generic sandbox wouldn't show you anything real. CheckinApp is lightweight enough to try free for 14 days. The 150-call/month AI Sales Coach allowance applies wherever it's included (standalone or in the Suite) — it covers the volume the vast majority of firms run; high-volume practices simply pay per additional call beyond that. Pricing depends on integration complexity and case volume — book a quick call and we'll show you exact numbers in 15 minutes.</p>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section" id="faq">
-        <div class="faq-inner">
-            <div style="text-align:center; margin-bottom: 44px;">
-                <div class="section-tag" style="display:inline-block;">Common Questions</div>
-                <h2 class="section-h2">Before You Book a Call</h2>
-            </div>
-
-            <details class="faq-item">
-                <summary><span class="faq-q">Does ClearSignal replace my existing CRM?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">No. ClearSignal connects to the CRM you already use — HubSpot, Lead Docket, and others — rather than asking you to migrate your case data somewhere new. It's the attribution and intelligence layer sitting on top of what you have, not a rip-and-replace.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">What tools will this let us cancel?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">It depends on your current stack, but most firms find overlap with standalone call-tracking subscriptions, separate intake/form tools, and the manual hours spent building reports by hand. We'll map your specific stack against ClearSignal on the demo call and show you exactly where the overlap is.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">How is client data handled and secured?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">Client and lead data is encrypted and handled with the same care as the case management systems you already trust. Specific compliance and security details for your firm's requirements are something we'll walk through directly on a call, since every firm's needs are a little different.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">How long does setup actually take?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">It depends on which integrations your firm needs, but most firms are fully connected within 2-3 weeks. Since ClearSignal is already running in production for real firms, you're not waiting on us to build the core platform — just configure it for your sources.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">Can I try before I commit?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">ClearSignal and AI Sales Coach are demo-only — both are wired into your specific ad accounts, CRM, and call data, so a generic sandbox trial wouldn't actually show you anything real. CheckinApp, though, is lightweight enough to try free for 14 days with no setup fee.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">What does the AI Sales Coach actually do?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">Every recorded consult or intake call is automatically scored against a fixed rubric — rapport, discovery, objection handling, value articulation, and close — with a plain-language coaching note on what a top closer would've said differently. It also tallies your most common objections and surfaces which ones your team handles well versus where deals are being lost.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">Is this only for estate planning and personal injury firms?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">Those are where it's been built and proven first, but the underlying system works for any consult-based professional service — anywhere a lead has to turn into a booked appointment and a booked appointment has to turn into a signed client.</div>
-            </details>
-            <details class="faq-item">
-                <summary><span class="faq-q">What happens on the demo call?</span><span class="faq-chevron">+</span></summary>
-                <div class="faq-a">A real walkthrough, not a sales pitch — we'll look at your current setup, show you exactly what ClearSignal would surface for your firm, and give you a straight answer on pricing and timeline. You leave with clarity either way.</div>
-            </details>
-        </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="final-cta">
-        <div class="final-cta-inner">
-            <div class="final-cta-eyebrow">See It On Your Own Numbers</div>
-            <h2 class="final-cta-h2">Stop Guessing.<br>Start Seeing <span>Cost Per Signed Case.</span></h2>
-            <p class="final-cta-sub">One call, a real look at your current setup, and a clear answer on whether ClearSignal closes the gap your firm has right now.</p>
-            <a href="#" class="btn-gold open-modal" style="font-size:17px; padding: 18px 40px;">🗓 Book Your Live Demo</a>
-            <div class="final-cta-checks">
-                <div class="final-cta-check"><span>✓</span> See your own data, not a generic demo</div>
-                <div class="final-cta-check"><span>✓</span> No long-term contract required</div>
-                <div class="final-cta-check"><span>✓</span> Works alongside the CRM you already use</div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-inner">
-            <p>© 2026 ClearSignal, a product of Alchemist Mind Pros. All rights reserved.</p>
-            <nav>
-                <a href="#faq">FAQ</a>
-                <a href="#" class="open-modal">Contact</a>
-                <a href="https://alchemistmind.pro/privacy-policy/">Privacy Policy</a>
-                <a href="https://alchemistmind.pro/terms-of-service/">Terms of Service</a>
-            </nav>
-        </div>
-    </footer>
-
-    <div class="sticky-mobile" id="stickyMobile"><button class="sticky-mobile-btn open-modal">🗓 Book a Live Demo</button></div>
-
-    <!-- BOOKING MODAL -->
-    <div class="modal-overlay" id="bookingModal">
-        <div class="modal-box">
-            <div class="modal-header"><div class="modal-title">Book Your Live Demo</div><button class="modal-close" id="modalClose">×</button></div>
-            <div id="calendly-container"></div>
-        </div>
-    </div>
-
-    <script>
-      /* ---------- Booking modal (Calendly) ---------- */
-      const modal = document.getElementById('bookingModal');
-      const modalClose = document.getElementById('modalClose');
-      const CALENDLY_URL = 'https://calendly.com/team-alchemistmind/30min';
-      let calendlyLoaded = false;
-      function openModal() {
-        modal.classList.add('open'); document.body.style.overflow = 'hidden';
-        if (!calendlyLoaded) {
-          const script = document.createElement('script');
-          script.src = 'https://assets.calendly.com/assets/external/widget.js';
-          script.onload = () => { Calendly.initInlineWidget({ url: CALENDLY_URL, parentElement: document.getElementById('calendly-container') }); calendlyLoaded = true; };
-          document.head.appendChild(script);
-        }
-      }
-      function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; }
-      document.querySelectorAll('.open-modal').forEach(el => el.addEventListener('click', e => { e.preventDefault(); openModal(); }));
-      modalClose.addEventListener('click', closeModal);
-      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-      window.addEventListener('message', e => { if (e.data?.event === 'calendly.event_scheduled') closeModal(); });
-
-      /* ---------- Sticky mobile CTA ---------- */
-      const sticky = document.getElementById('stickyMobile');
-      window.addEventListener('scroll', () => { sticky.classList.toggle('visible', window.scrollY > 400); }, { passive: true });
-
-      /* ---------- Mobile nav toggle ---------- */
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      if (navToggle && navLinks) {
-        navToggle.addEventListener('click', () => navLinks.classList.toggle('mobile-open'));
-        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('mobile-open')));
-      }
-
-      /* ---------- Rotating hero H1 ---------- */
-      const rotatingPhrases = [
-        'cost per signed case',
-        'return on ad spend',
-        'cost per signed client',
-        'channel-by-channel ROI',
-        'marketing performance'
-      ];
-      const rotEl = document.querySelector('.rotating-line');
-      let rotIdx = 0;
-      if (rotEl) {
-        setInterval(() => {
-          rotEl.classList.add('slide-out');
-          setTimeout(() => {
-            rotIdx = (rotIdx + 1) % rotatingPhrases.length;
-            rotEl.textContent = rotatingPhrases[rotIdx];
-            rotEl.classList.remove('slide-out');
-            rotEl.classList.add('slide-in-pre');
-            requestAnimationFrame(() => { requestAnimationFrame(() => rotEl.classList.remove('slide-in-pre')); });
-          }, 460);
-        }, 2600);
-      }
-
-      /* ---------- Cost-per-signed-case calculator ---------- */
-      function fmtMoney(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
-      function runCalc() {
-        const spend = parseFloat(document.getElementById('calc-spend').value) || 0;
-        const leads = parseFloat(document.getElementById('calc-leads').value) || 1;
-        const show = (parseFloat(document.getElementById('calc-show').value) || 0) / 100;
-        const close = (parseFloat(document.getElementById('calc-close').value) || 0) / 100;
-        const cpl = spend / leads;
-        const signedCases = Math.max(leads * show * close, 0.0001);
-        const cpsc = spend / signedCases;
-        document.getElementById('result-cpl').textContent = fmtMoney(cpl);
-        document.getElementById('result-cpsc').textContent = fmtMoney(cpsc);
-        document.getElementById('result-signed-count').textContent = Math.round(signedCases);
-      }
-      ['calc-spend','calc-leads','calc-show','calc-close'].forEach(id => {
-        document.getElementById(id).addEventListener('input', runCalc);
-      });
-      runCalc();
-
-      /* ---------- Diagnostic quiz ---------- */
-      const quizMeta = {
-        1: { tool: "ClearSignal", title: "You can't see which channel actually produces signed cases", benefit: "ClearSignal breaks down cost-per-signed-case by channel automatically, so you know exactly where to scale spend and where to cut it.", cost: "Every month without this, ad budget keeps flowing to channels that may be producing leads, not clients." },
-        2: { tool: "ClearSignal", title: "Your ad platforms aren't learning from real signed-case outcomes", benefit: "ClearSignal automatically feeds signed-case data back to Google and Meta, training their algorithms to find more clients like your best ones, not just more cheap leads.", cost: "Without this, the gap between what you're paying for and what's actually converting keeps compounding the longer it goes unaddressed." },
-        3: { tool: "AI Sales Coach", title: "Nobody's reviewing how your team handles consult calls", benefit: "Every call gets automatically scored and coached, so you know exactly where deals are won or lost — without listening to every call yourself.", cost: "Every unreviewed call is a chance to lose a winnable case to a fixable mistake nobody caught." },
-        4: { tool: "CheckinApp", title: "Your in-office intake is still manual", benefit: "CheckinApp replaces the clipboard with a modern digital check-in clients complete the moment they walk in.", cost: "An outdated first impression is a small thing that adds up, especially against competitors who've already modernized." },
-        5: { tool: "ClearSignal", title: "You can't see where leads go cold before the consult", benefit: "ClearSignal tracks every step from ad click to signed case, so drop-off points are visible instead of invisible.", cost: "Each unexplained drop-off is a lead you already paid for, lost without knowing why." },
-      };
-
-      const totalSteps = 5;
-      let currentStep = 1;
-      const quizAnswers = {};
-
-      function updateProgress() {
-        const pct = Math.min(((currentStep - 1) / totalSteps) * 100 + 5, 100);
-        document.getElementById('quiz-progress-fill').style.width = pct + '%';
-        document.getElementById('quiz-progress-text').textContent = 'Question ' + currentStep + ' of ' + totalSteps;
-      }
-
-      function showStep(n) {
-        document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-        const target = document.querySelector('.quiz-step[data-step="' + n + '"]');
-        if (target) target.classList.add('active');
-        document.getElementById('quiz-back-row').style.visibility = n > 1 ? 'visible' : 'hidden';
-        updateProgress();
-      }
-
-      document.getElementById('quiz-back-link').addEventListener('click', (e) => {
-        e.preventDefault();
-        if (currentStep > 1) { currentStep -= 1; showStep(currentStep); }
-      });
-
-      document.querySelectorAll('.quiz-options').forEach(group => {
-        const qNum = parseInt(group.getAttribute('data-question'), 10);
-        group.querySelectorAll('.quiz-option').forEach(opt => {
-          opt.addEventListener('click', () => {
-            group.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
-            opt.classList.add('selected');
-            quizAnswers[qNum] = parseInt(opt.getAttribute('data-points'), 10);
-            setTimeout(() => {
-              if (qNum < totalSteps) { currentStep = qNum + 1; showStep(currentStep); }
-              else { showQuizResult(); }
-            }, 350);
-          });
-        });
-      });
-
-      function showQuizResult() {
-        document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
-        document.getElementById('quiz-progress-fill').style.width = '100%';
-        document.getElementById('quiz-progress-text').textContent = 'Complete';
-        document.getElementById('quiz-back-row').style.visibility = 'hidden';
-
-        const score = Object.values(quizAnswers).reduce((a, b) => a + b, 0);
-        const result = document.getElementById('quiz-result');
-        const scoreEl = document.getElementById('quiz-score');
-        const labelEl = document.getElementById('quiz-label');
-        const textEl = document.getElementById('quiz-text');
-        const ctaEl = document.getElementById('quiz-cta');
-        const gapsEl = document.getElementById('quiz-gaps');
-
-        scoreEl.textContent = score + ' / 15';
-        scoreEl.className = 'quiz-result-score';
-        labelEl.className = 'quiz-result-label';
-
-        let band;
-        if (score <= 5) {
-          band = 'band-red';
-          labelEl.textContent = "You're Likely Leaking Real Revenue Right Now";
-          textEl.textContent = "Based on your answers, your firm has multiple blind spots between ad spend and signed cases. Every week this stays unaddressed is ad budget being spent without knowing what's working — that's money walking out the door daily, not just a someday project.";
-          ctaEl.textContent = "🗓 Book a Demo — This Is Urgent";
-        } else if (score <= 10) {
-          band = 'band-amber';
-          labelEl.textContent = "You Have Real Blind Spots Costing You Money";
-          textEl.textContent = "You're tracking some of this, but the gaps below are still quietly costing you every month. Worth a focused conversation before they compound further.";
-          ctaEl.textContent = "🗓 Book a Demo";
-        } else {
-          band = 'band-green';
-          labelEl.textContent = "You're Ahead of Most Firms";
-          textEl.textContent = "You're doing more than most firms we talk to. Here's the one thing still worth a look:";
-          ctaEl.textContent = "🗓 See What's Left to Optimize";
-        }
-        scoreEl.classList.add(band);
-        labelEl.classList.add(band);
-
-        gapsEl.innerHTML = '';
-        const gapQuestions = Object.keys(quizAnswers).filter(q => quizAnswers[q] < 3).map(Number).sort((a, b) => quizAnswers[a] - quizAnswers[b]);
-
-        if (gapQuestions.length === 0) {
-          const card = document.createElement('div');
-          card.className = 'quiz-gap-card';
-          card.innerHTML = '<div class="quiz-gap-tool">ClearSignal</div><div class="quiz-gap-title">Even strong setups usually miss this one</div><div class="quiz-gap-text">Offline conversion sync is the most commonly overlooked piece, even for firms tracking everything else well. Worth confirming it\'s actually wired up correctly.</div>';
-          gapsEl.appendChild(card);
-        } else {
-          gapQuestions.forEach(q => {
-            const meta = quizMeta[q];
-            const card = document.createElement('div');
-            card.className = 'quiz-gap-card';
-            card.innerHTML = '<div class="quiz-gap-tool">' + meta.tool + '</div><div class="quiz-gap-title">' + meta.title + '</div><div class="quiz-gap-text"><strong>How it helps:</strong> ' + meta.benefit + '<br><strong>If you wait:</strong> ' + meta.cost + '</div>';
-            gapsEl.appendChild(card);
-          });
-        }
-
-        result.classList.add('show');
-        result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      showStep(1);
-    </script>
-
-</body>
-</html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alchemist Mind Pros | Law Firm PPC & Attribution | Cost Per Signed Case</title><meta name="description" content="Google Partner agency for law firms spending $10K+/mo on ads. We run Google and Meta ads and connect every dollar to signed cases with ClearSignal.">
+<link rel="canonical" href="https://alchemistmind.pro/">
+<meta property="og:title" content="Alchemist Mind Pros | Law Firm PPC & Attribution | Cost Per Signed Case"><meta property="og:description" content="Google Partner agency for law firms spending $10K+/mo on ads. We run Google and Meta ads and connect every dollar to signed cases with ClearSignal."><meta property="og:type" content="website"><meta property="og:image" content="https://alchemistmind.pro/assets/amp-logo.png">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WVP5239R');</script>
+</head><body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVP5239R" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header class="site-header"><div class="wrap nav">
+<a class="brand" href="index.html" aria-label="Alchemist Mind Pros home"><img src="assets/amp-logo-256.png" alt="Alchemist Mind Pros logo" width="44" height="45"><span class="brand-name">Alchemist Mind Pros<small>Law firm growth</small></span></a>
+<ul class="nav-links"><li><a href="clearsignal.html">ClearSignal</a></li><li><a href="ai-sales-coach.html">AI Sales Coach</a></li><li><a href="check-in-app.html">Check-In App</a></li><li class="has-dd"><a href="ppc-management.html">PPC Management <svg class="chev" viewBox="0 0 10 10"><path d="M1 3l4 4 4-4" stroke="currentColor" fill="none" stroke-width="1.6"/></svg></a><div class="dropdown"><a href="ppc-management.html"><span class="dd-ico">&#9733;</span><span><strong>PPC Management overview</strong><span>How we run paid media for law firms</span></span></a><div class="dd-foot"><a href="google-ads.html"><span class="dd-ico">G</span><span><strong>Google Ads</strong><span>Search, LSA and PMax built on signed-case data</span></span></a><a href="meta-ads.html"><span class="dd-ico">M</span><span><strong>Meta Ads</strong><span>Facebook and Instagram that feed intake, not just forms</span></span></a><a href="reddit-ads.html"><span class="dd-ico">R</span><span><strong>Reddit Ads</strong><span>Reach people researching their legal problem</span></span></a><a href="chatgpt-ads.html"><span class="dd-ico">AI</span><span><strong>ChatGPT Ads</strong><span>Show up inside ChatGPT conversations</span></span></a></div></div></li><li><a href="index.html#results">Results</a></li></ul>
+<div class="nav-cta"><a href="#book" class="btn btn-primary js-book" data-loc="nav"><span class="btn-text">Book a Strategy Call</span> </a><button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
+</div><nav class="mobile-menu"><a href="clearsignal.html">ClearSignal</a><a href="ai-sales-coach.html">AI Sales Coach</a><a href="check-in-app.html">Check-In App</a><a href="ppc-management.html">PPC Management</a><div class="sub"><a href="google-ads.html">Google Ads</a><a href="meta-ads.html">Meta Ads</a><a href="reddit-ads.html">Reddit Ads</a><a href="chatgpt-ads.html">ChatGPT Ads</a></div><a href="index.html#results">Results</a><a href="#book" class="btn btn-primary js-book" data-loc="mobile">Book a Strategy Call <span class="arr">&rarr;</span></a></nav></header>
+<main>
+<section class="hero"><div class="wrap hero-grid">
+<div>
+<span class="eyebrow">Performance marketing for law firms</span>
+<h1><span class="static">We help law firms</span><span class="rotator" aria-live="polite"><span>see their true cost per signed case.</span><span>stop wasting Google Ads spend.</span><span>know which channel actually signs clients.</span><span>train Google to find clients, not clicks.</span><span>turn more consults into signed retainers.</span><span>scale past $100K a month without the waste.</span></span></h1>
+<p class="lede">Alchemist Mind Pros runs <strong>Google and Meta ads for law firms</strong> investing $10K to $100K+ a month, and connects every dollar to the cases it signs with <strong>ClearSignal</strong>, our AI-powered reporting dashboard. You make decisions on cost per signed case, not clicks.</p>
+<div class="btn-row"><a href="#book" class="btn btn-primary js-book" data-loc="home-hero">Book a Strategy Call <span class="arr">&rarr;</span></a><a href="#calculator" class="btn btn-ghost">Calculate your cost per signed case</a></div>
+<div class="trust-row"><span class="gp-badge" title="Alchemist Mind Pros is an official Google Partner"><svg class="gp-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Official Google Partner<small>Google Ads agency</small></span></span><span class="trust-item"><svg class="" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>95%+ client retention</span><span class="trust-item"><svg class="" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Month-to-month, no contracts</span></div>
+</div>
+<div style="position:relative"><div class="dash" role="img" aria-label="Illustrative ClearSignal dashboard">
+<div class="dash-top"><div><div class="dash-title">Cost per signed case by channel</div><div class="dash-sub">Last 90 days &middot; CRM-verified</div></div><span class="live"><i></i>LIVE</span></div>
+<div class="kpis"><div class="kpi"><span>Signed cases</span><b>148<em>+31%</em></b></div><div class="kpi"><span>Blended CPSC</span><b>$1,162</b></div><div class="kpi"><span>CRM match</span><b>94%</b></div></div>
+<div class="bars"><div class="bar-row"><span>Google Ads</span><div class="bar"><i data-w="62%"></i></div><b>$1,240</b></div><div class="bar-row"><span>Meta Ads</span><div class="bar"><i data-w="88%"></i></div><b>$1,980</b></div><div class="bar-row"><span>LSA</span><div class="bar"><i data-w="44%"></i></div><b>$890</b></div><div class="bar-row"><span>Organic</span><div class="bar"><i data-w="22%"></i></div><b>$410</b></div></div>
+<div class="ticker"><div><span class="ok">&#10003;</span> Case #1084 signed &middot; matched to Google Ads click</div><div><span class="ok">&#10003;</span> Offline conversion sent to Google &amp; Meta</div><div><span class="ok">&#10003;</span> Consult call scored 4.6 / 5 by AI Sales Coach</div></div>
+<span class="illus">Illustrative data</span></div>
+<div class="float-card" style="left:-28px;top:-26px"><span class="dot">&darr;</span><div><b>-38%</b><small>blended cost per signed case</small></div></div>
+</div>
+</div></section>
+<div class="wrap stats-wrap"><div class="stats reveal">
+<div class="stat"><b>$20M<span class="accent">+</span></b><span>in ad spend managed across Google, Meta and more</span></div>
+<div class="stat"><b>1,000s</b><span>of signed cases attributed back to the click that drove them</span></div>
+<div class="stat"><b>95%<span class="accent">+</span></b><span>client retention, on month-to-month agreements</span></div>
+<div class="stat"><b>50%</b><span>lower cost per lead for an estate planning firm in 90 days</span></div>
+</div></div>
+
+<section id="problem"><div class="wrap">
+<div class="sec-head reveal"><span class="eyebrow">The problem</span><h2>Your ads report leads. <span class="accent">Your partners care about signed cases.</span></h2><p>Most law firms spending serious money on ads can tell you their cost per lead. Almost none can tell you which channel, campaign or keyword produced last month's signed cases. That gap is where budget disappears.</p></div>
+<div class="grid-4">
+<div class="card reveal"><span class="pain-num">01</span><h3>No cost per signed case</h3><p>You know what a lead costs. You don't know which leads signed, so you can't tell a $300 lead that signs from one that never answers.</p><div class="cost">Budget follows volume, not revenue</div></div>
+<div class="card reveal"><span class="pain-num">02</span><h3>Google is optimizing for the wrong thing</h3><p>Smart bidding chases form fills and calls. Without signed-case data flowing back, the algorithm gets better at finding cheap, unqualified leads.</p><div class="cost">More leads, same caseload</div></div>
+<div class="card reveal"><span class="pain-num">03</span><h3>Agency reports that don't match your CRM</h3><p>Clicks, impressions and CTR in one deck. Intake numbers in another. Nobody can reconcile them, so nobody trusts either.</p><div class="cost">Decisions made on gut feel</div></div>
+<div class="card reveal"><span class="pain-num">04</span><h3>Intake is a black box</h3><p>Leads go cold before the consult. Calls aren't reviewed. You can't tell if a bad month is a marketing problem or an intake problem.</p><div class="cost">Paid leads leak out the back door</div></div>
+</div></div></section>
+
+<section class="sec-paper" id="what-we-do"><div class="wrap">
+<div class="sec-head center reveal"><span class="eyebrow">What we do</span><h2>One team for the full path from <span class="accent">click to signed case.</span></h2><p>Think of it like a football program: recruiting, film room and coaching all have to work together. We run the ads, measure what signs, and help your intake team close more of what comes in.</p></div>
+<div class="pillars">
+<div class="pillar reveal"><span class="step">01 &middot; Acquire</span><h3>PPC Management</h3><div class="tag">Our strongest suit. Official Google Partner.</div><p>Paid search and paid social run by people who've managed $20M+ in spend and know legal advertising rules.</p>
+<ul><li><a href="google-ads.html"><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google Ads + LSA</a></li><li><a href="meta-ads.html"><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Meta Ads</a></li><li><a href="reddit-ads.html"><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Reddit Ads</a></li><li><a href="chatgpt-ads.html"><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>ChatGPT Ads</a></li></ul>
+<a class="link-arrow" href="ppc-management.html">Explore PPC Management <span class="arr">&rarr;</span></a></div>
+<div class="pillar featured reveal"><span class="badge-core">Core offer</span><span class="step">02 &middot; Measure</span><h3>ClearSignal</h3><div class="tag">AI-powered reporting dashboard</div><p>Connects your ad platforms, call tracking and CRM so you see cost per qualified lead and cost per signed case by channel, live.</p>
+<ul><li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cross-channel attribution</li><li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Offline conversion sync to Google + Meta</li><li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Native HubSpot, Salesforce, Lead Docket sync</li></ul>
+<a class="link-arrow" href="clearsignal.html">See ClearSignal <span class="arr">&rarr;</span></a></div>
+<div class="pillar reveal"><span class="step">03 &middot; Convert</span><h3>Intake Tools</h3><div class="tag">Close more of the leads you pay for</div><p>Score every consult, coach every rep and capture every walk-in so fewer paid leads leak before the retainer.</p>
+<ul><li><a href="ai-sales-coach.html"><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>AI Sales Coach</a></li><li><a href="check-in-app.html"><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Check-In App</a></li></ul>
+<a class="link-arrow" href="ai-sales-coach.html">Explore intake tools <span class="arr">&rarr;</span></a></div>
+</div></div></section>
+
+<section class="sec-dark" id="clearsignal"><div class="wrap split">
+<div class="reveal"><span class="eyebrow">Our core offer</span><h2>ClearSignal shows you exactly <span class="accent">which dollars sign cases.</span></h2>
+<p style="margin-top:16px;font-size:1.08rem">Built inside a real law firm's marketing operation, ClearSignal sits on top of the CRM you already use. It matches every signed case back to the ad, keyword and call that produced it, then sends that outcome to Google and Meta so they find more clients like your best ones.</p>
+<ul class="feat-list"><li><span class="tick"><svg class="" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Cost per qualified lead and cost per signed case</b><p>By channel, campaign and practice area. Updated live, not in a monthly PDF.</p></div></li><li><span class="tick"><svg class="" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Offline conversion sync</b><p>Signed cases flow back to Google and Meta automatically, so bidding optimizes for clients, not form fills.</p></div></li><li><span class="tick"><svg class="" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>One source of truth</b><p>Ads, call tracking, CRM and intake in one dashboard your CFO and marketing team both trust.</p></div></li></ul>
+<div class="btn-row"><a class="btn btn-primary" href="clearsignal.html">Explore ClearSignal <span class="arr">&rarr;</span></a><a href="#book" class="btn btn-ghost js-book" data-loc="home-cs">Book a Live Demo <span class="arr">&rarr;</span></a></div></div>
+<div class="reveal"><div class="dash" role="img" aria-label="Illustrative ClearSignal dashboard">
+<div class="dash-top"><div><div class="dash-title">Signed cases by channel</div><div class="dash-sub">Last 90 days &middot; CRM-verified</div></div><span class="live"><i></i>LIVE</span></div>
+<div class="kpis"><div class="kpi"><span>Signed cases</span><b>148<em>+31%</em></b></div><div class="kpi"><span>Blended CPSC</span><b>$1,162</b></div><div class="kpi"><span>CRM match</span><b>94%</b></div></div>
+<div class="bars"><div class="bar-row"><span>Google Search</span><div class="bar"><i data-w="58%"></i></div><b>$1,180</b></div><div class="bar-row"><span>Google LSA</span><div class="bar"><i data-w="42%"></i></div><b>$860</b></div><div class="bar-row"><span>Meta Ads</span><div class="bar"><i data-w="90%"></i></div><b>$2,140</b></div><div class="bar-row"><span>Reddit</span><div class="bar"><i data-w="70%"></i></div><b>$1,640</b></div><div class="bar-row"><span>Referral</span><div class="bar"><i data-w="16%"></i></div><b>$320</b></div></div>
+<div class="ticker"><div><span class="ok">&#10003;</span> Case #1084 signed &middot; matched to Google Ads click</div><div><span class="ok">&#10003;</span> Offline conversion sent to Google &amp; Meta</div><div><span class="ok">&#10003;</span> Consult call scored 4.6 / 5 by AI Sales Coach</div></div>
+<span class="illus">Illustrative data</span></div></div>
+</div></section>
+
+<section id="ppc"><div class="wrap">
+<div class="split" style="margin-bottom:56px;align-items:end"><div class="reveal"><span class="eyebrow">PPC Management</span><h2>Paid media that's judged on <span class="accent">signed cases.</span></h2></div>
+<div class="reveal"><p style="font-size:1.08rem">Google Ads is where most firms spend the most and waste the most. As an official Google Partner, we build campaigns on clean conversion tracking, ruthless search term discipline and signed-case feedback, then expand into Meta, Reddit and ChatGPT once the foundation is right.</p><div style="margin-top:18px"><span class="gp-badge" title="Alchemist Mind Pros is an official Google Partner"><svg class="gp-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Official Google Partner<small>Google Ads agency</small></span></span></div></div></div>
+<div class="channels"><a class="channel reveal" href="google-ads.html"><span class="logo-chip" style="background:#fff"><svg width="26" height="26" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.6 5.4 2.6 13.3l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.1-.4-4.6H24v9h12.4c-.5 2.9-2.2 5.3-4.6 6.9l7.4 5.8c4.3-4 6.9-9.9 6.9-17.1z"/><path fill="#FBBC05" d="M10.5 28.6A14.5 14.5 0 0 1 9.5 24c0-1.6.3-3.1.8-4.6l-7.9-6.1A24 24 0 0 0 0 24c0 3.9.9 7.5 2.6 10.7l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.4-5.8c-2.1 1.4-4.8 2.3-8.5 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.6 42.6 14.6 48 24 48z"/></svg></span><span class="pill">Our strongest suit</span><h3>Google Ads</h3><p>Search, Local Services Ads and Performance Max, optimized on signed cases through offline conversion imports.</p><span class="link-arrow">Learn more <span class="arr">&rarr;</span></span></a><a class="channel reveal" href="meta-ads.html"><span class="logo-chip" style="background:#EEF3FF;color:#1D63ED;font-weight:800;font-size:1.3rem">&infin;</span><span class="pill">Facebook + Instagram</span><h3>Meta Ads</h3><p>Creative-led campaigns with Conversions API and CRM feedback so Meta learns what a real client looks like.</p><span class="link-arrow">Learn more <span class="arr">&rarr;</span></span></a><a class="channel reveal" href="reddit-ads.html"><span class="logo-chip" style="background:#FFF0EA;color:#FF4500;font-weight:800;font-family:var(--font-h)">r/</span><span class="pill">Emerging channel</span><h3>Reddit Ads</h3><p>Reach people researching their exact problem in the communities where they ask for advice.</p><span class="link-arrow">Learn more <span class="arr">&rarr;</span></span></a><a class="channel reveal" href="chatgpt-ads.html"><span class="logo-chip" style="background:#EFF7F3;color:#10A37F;font-weight:800;font-family:var(--font-h);font-size:.85rem">AI</span><span class="pill">New in 2026</span><h3>ChatGPT Ads</h3><p>Appear in front of people asking ChatGPT about legal problems your firm solves.</p><span class="link-arrow">Learn more <span class="arr">&rarr;</span></span></a></div>
+</div></section>
+
+<section class="sec-paper" id="who"><div class="wrap">
+<div class="sec-head reveal"><span class="eyebrow">Who we help</span><h2>Built for law firms that <span class="accent">take growth seriously.</span></h2><p>We do our best work with consultation-based firms that already invest in advertising and want to know exactly what it's producing.</p></div>
+<div class="fit">
+<div class="fit-box reveal"><h3><svg class="" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> You're a fit if</h3><ul>
+<li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>You spend $10K+ a month on ads (our sweet spot is $50K to $100K+)</li>
+<li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Google Ads is a major channel and you suspect it's leaking budget</li>
+<li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>You can't confidently answer &ldquo;what does a signed case cost us, by channel?&rdquo;</li>
+<li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>You use (or are ready to use) a CRM like HubSpot, Salesforce or Lead Docket</li>
+<li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>You want a partner who reports on cases and revenue, not impressions</li></ul></div>
+<div class="fit-box no reveal"><h3><svg class="" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Probably not a fit if</h3><ul>
+<li><svg class="x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>You're looking for the cheapest possible ad management</li>
+<li><svg class="x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>You want vanity metrics and monthly PDFs</li>
+<li><svg class="x" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>You aren't willing to share intake and CRM outcomes</li></ul></div>
+</div>
+<div class="chips reveal"><span class="chip">Personal Injury</span><span class="chip">Estate Planning</span><span class="chip">Elder Law</span><span class="chip">Lemon Law</span><span class="chip">Family Law</span><span class="chip">Criminal Defense</span><span class="chip">Employment Law</span><span class="chip">Any consult-based practice</span></div>
+<div class="roles">
+<div class="role reveal"><b>Managing Partner / CEO</b><p>Know what growth costs and where the next dollar should go.</p></div>
+<div class="role reveal"><b>CFO / Firm Administrator</b><p>Marketing spend tied to signed cases you can reconcile against the books.</p></div>
+<div class="role reveal"><b>Marketing Director</b><p>Channel-level proof to defend budget and cut what isn't working.</p></div>
+<div class="role reveal"><b>Intake Manager</b><p>Scored consults, coaching notes and fewer leads going cold.</p></div>
+</div></div></section>
+
+<section id="results"><div class="wrap">
+<div class="sec-head center reveal"><span class="eyebrow">Results</span><h2>Numbers our clients <span class="accent">actually care about.</span></h2><p>We report on cost per lead, cost per qualified lead and cost per signed case, so wins show up where it matters: the caseload.</p></div>
+<div class="grid-2">
+<div class="case reveal"><span class="case-tag">Estate planning law firm</span><h3>Cost per lead cut in half. Seminars filling 3.5x faster.</h3>
+<div class="metric-pair"><span class="lbl">Cost per lead</span><span class="from">$41.62</span><span class="arrow"><svg class="" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="to">$20.90</span></div>
+<div class="metric-pair"><span class="lbl">Time to fill a seminar</span><span class="from">2 weeks</span><span class="arrow"><svg class="" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="to">4 days</span></div>
+<blockquote>&ldquo;Tre cut our lead costs in half while doubling our seminar fills. The ROI was immediate and incredible.&rdquo;<cite>Partner, Estate Planning Law Firm</cite></blockquote></div>
+<div class="case reveal"><span class="case-tag">High-volume personal injury firm</span><h3>Every channel tied to signed cases, plus custom lien tracking.</h3>
+<div class="metric-pair"><span class="lbl">Marketing reporting</span><span class="from">Spreadsheets</span><span class="arrow"><svg class="" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="to">Live dashboard</span></div>
+<div class="metric-pair"><span class="lbl">Signed cases sent back to Google and Meta</span><span class="from">Never</span><span class="arrow"><svg class="" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="to">Automated</span></div>
+<p style="margin-top:22px">Leadership now reviews cost per signed case by channel every week and moves budget based on cases, not lead volume. Hospital lien tracking was built into the same dashboard.</p></div>
+</div>
+<p class="note-small" style="text-align:center;margin-top:22px">Client names withheld for confidentiality. Full case studies shared on your strategy call.</p>
+</div></section>
+
+<section id="quiz" class="sec-dark"><div class="wrap">
+<div class="sec-head center reveal"><span class="eyebrow">60-second self-check</span><h2>How clearly can you see your marketing?</h2><p>Five questions. Get a visibility score and the exact gaps costing you signed cases.</p></div>
+<div class="quiz reveal" id="quiz-app"><div class="quiz-top"><span class="qcount">Question 1 of 5</span><span>~60 sec</span></div><div class="progress"><i></i></div>
+<div class="q" data-i="0"><h3>Do you know your cost per signed case, by channel?</h3><div class="opts"><button class="opt" data-v="2"><span class="k">A</span>Yes, exactly, every month</button><button class="opt" data-v="1"><span class="k">B</span>A rough idea</button><button class="opt" data-v="0"><span class="k">C</span>I only know cost per lead</button></div></div><div class="q" data-i="1"><h3>Are signed-case outcomes sent back to Google and Meta?</h3><div class="opts"><button class="opt" data-v="2"><span class="k">A</span>Yes, fully automated</button><button class="opt" data-v="1"><span class="k">B</span>Manually or occasionally</button><button class="opt" data-v="0"><span class="k">C</span>No / not sure</button></div></div><div class="q" data-i="2"><h3>Has anyone reviewed your consult calls in the last 30 days?</h3><div class="opts"><button class="opt" data-v="2"><span class="k">A</span>Every call is scored</button><button class="opt" data-v="1"><span class="k">B</span>A handful</button><button class="opt" data-v="0"><span class="k">C</span>No</button></div></div><div class="q" data-i="3"><h3>How do clients check in at your office today?</h3><div class="opts"><button class="opt" data-v="2"><span class="k">A</span>Fully digital, synced to our CRM</button><button class="opt" data-v="1"><span class="k">B</span>A mix</button><button class="opt" data-v="0"><span class="k">C</span>Paper clipboard</button></div></div><div class="q" data-i="4"><h3>If a lead went cold before the consult, would you know why?</h3><div class="opts"><button class="opt" data-v="2"><span class="k">A</span>Yes, we track every step</button><button class="opt" data-v="1"><span class="k">B</span>Sometimes</button><button class="opt" data-v="0"><span class="k">C</span>No</button></div></div>
+<div class="result"><div class="score-ring"><svg width="150" height="150" viewBox="0 0 150 150"><circle cx="75" cy="75" r="64" stroke="rgba(255,255,255,.08)" stroke-width="10" fill="none"/><circle class="ring-fg" cx="75" cy="75" r="64" stroke="url(#cg)" stroke-width="10" fill="none" stroke-linecap="round"/><defs><linearGradient id="cg"><stop offset="0" stop-color="#93622F"/><stop offset="1" stop-color="#DDA76A"/></linearGradient></defs></svg><b><span class="score-num">0</span></b></div>
+<h3 class="res-title"></h3><p class="res-desc"></p><div class="gaps"></div>
+<div class="btn-row" style="justify-content:center"><a href="#book" class="btn btn-primary js-book" data-loc="quiz">Fix These Gaps With Us <span class="arr">&rarr;</span></a><button class="btn btn-ghost quiz-restart">Retake</button></div></div>
+<button class="quiz-back">&larr; Back</button>
+</div></div></section>
+<section id="calculator" class="sec-paper"><div class="wrap">
+<div class="sec-head center reveal"><span class="eyebrow">Free tool &middot; No email required</span><h2>What is your real cost per signed case?</h2><p>Move the sliders to match last month. Most firms have never seen this number, and it's the only one that tells you whether your marketing is working.</p></div>
+<div class="calc reveal"><div class="calc-in">
+<div class="field"><label for="c-spend">Monthly ad spend<output for="c-spend"></output></label><input type="range" id="c-spend" name="spend" min="5000" max="300000" step="1000" value="50000" data-fmt="$"></div>
+<div class="field"><label for="c-leads">Leads per month<output for="c-leads"></output></label><input type="range" id="c-leads" name="leads" min="20" max="2000" step="5" value="250" data-fmt="n"><div class=hint>Calls + forms + chats from paid channels</div></div>
+<div class="field"><label for="c-show">Consult show rate<output for="c-show"></output></label><input type="range" id="c-show" name="show" min="10" max="100" step="1" value="55" data-fmt="%"><div class=hint>Leads that actually show for a consult</div></div>
+<div class="field"><label for="c-close">Consult-to-signed rate<output for="c-close"></output></label><input type="range" id="c-close" name="close" min="5" max="80" step="1" value="30" data-fmt="%"><div class=hint>Consults that sign a retainer</div></div>
+</div><div class="calc-out">
+<div class="out-main"><span>Your cost per signed case</span><b class="o-cpsc">$0</b></div>
+<div class="out-grid"><div><span>Cost per lead</span><b class="o-cpl">$0</b></div><div><span>Signed cases / mo</span><b class="o-signed">0</b></div><div><span>Consults / mo</span><b class="o-consults">0</b></div><div><span>CPSC if 20% waste is cut</span><b class="o-after">$0</b></div></div>
+<div class="out-note">Most firms we audit find <b>15 to 30%</b> of spend going to campaigns that never sign a case. At 20%, that's <b class="o-yearly">$0</b> a year you could reinvest in what works.</div>
+<a href="#book" class="btn btn-primary js-book" data-loc="calculator">Get My Real Numbers <span class="arr">&rarr;</span></a>
+<p class="fine">Benchmark: once every cost is attributed, most firms land between $1,500 and $3,000+ per signed case.</p>
+</div></div></div></section>
+
+<section id="process"><div class="wrap">
+<div class="sec-head reveal"><span class="eyebrow">How we work</span><h2>From first call to <span class="accent">fully live.</span></h2><p>No long onboarding. No long-term contract. Most firms see their first cost-per-signed-case report within weeks.</p></div>
+<div class="steps"><div class="stepc reveal"><h3>Strategy call</h3><p>30 minutes with Tre. We look at your goals, spend and current reporting.</p></div><div class="stepc reveal"><h3>Audit with your numbers</h3><p>We review your ad accounts, tracking and CRM and show you where budget leaks.</p></div><div class="stepc reveal"><h3>Build and connect</h3><p>Conversion tracking, offline conversion sync and ClearSignal wired to your stack.</p></div><div class="stepc reveal"><h3>Launch and optimize</h3><p>Campaigns rebuilt or refined around signed-case data, with weekly optimization.</p></div><div class="stepc reveal"><h3>Monthly case review</h3><p>A clear review of cost per signed case by channel and where to move budget next.</p></div></div>
+</div></section>
+
+<section class="sec-paper" id="founder"><div class="wrap founder">
+<div class="headshot reveal"><img src="assets/tre-headshot.jpg" width="800" height="1000" loading="lazy" alt="Tre Forte, founder of Alchemist Mind Pros" onerror="this.remove()"><span class="initials">TF</span><div class="headshot-tag"><b>Tre Forte</b>Founder &amp; Fractional CMO</div></div>
+<div class="reveal"><span class="eyebrow">Meet the founder</span><h2>Built by a CMO who sat <span class="accent">inside law firms.</span></h2>
+<p style="margin-top:18px;font-size:1.06rem">Tre Forte spent years as a fractional CMO inside law firms, accountable for signed cases, not clicks. The reporting he needed didn't exist, so he built it. That system became ClearSignal, and the approach became Alchemist Mind Pros.</p>
+<p style="margin-top:14px;font-size:1.06rem">His time playing collegiate football at Ohio State shaped how the team works: watch the film every week, be honest about what the tape shows, and adjust the game plan before the next snap.</p>
+<div class="creds"><div class="cred"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>$20M+ in managed ad spend</div><div class="cred"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Co-founded an Inc. 5000 agency</div><div class="cred"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg>Fractional CMO for law firms</div><div class="cred"><svg class="" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>Ohio State collegiate football</div></div>
+<div class="btn-row"><a href="#book" class="btn btn-dark js-book" data-loc="founder">Book a Call With Tre <span class="arr">&rarr;</span></a><a class="btn btn-outline" href="https://www.linkedin.com/in/tre-forte-9579a4154/" target="_blank" rel="noopener">Connect on LinkedIn</a></div></div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<div class="sec-head center reveal"><span class="eyebrow">FAQ</span><h2>Questions firms ask us</h2></div>
+<div class="faq"><details><summary>What does Alchemist Mind Pros actually do?</summary><p>We're a performance marketing agency for law firms. We manage your paid media (Google Ads, Meta, Reddit and ChatGPT ads), and we connect it to your CRM with ClearSignal so you can see cost per qualified lead and cost per signed case by channel. We also offer intake tools, AI Sales Coach and the Check-In App, to help you convert more of the leads you pay for.</p></details><details><summary>Do I have to use ClearSignal to work with you on PPC?</summary><p>No. Many clients start with PPC management and add ClearSignal later. That said, our PPC is strongest when signed-case data flows back into the ad platforms, which is what ClearSignal does.</p></details><details><summary>What size firm do you work with?</summary><p>Firms spending at least $10K a month on advertising, with our best fit between $50K and $100K+ a month. Below that, there usually isn't enough data for signed-case optimization to pay off.</p></details><details><summary>Do you lock us into a contract?</summary><p>No. We work month-to-month and keep 95%+ of our clients because the numbers justify it.</p></details><details><summary>Will this replace our CRM or intake software?</summary><p>No. ClearSignal sits on top of the CRM you already use, with native two-way sync for HubSpot, Salesforce and Lead Docket, and custom connections for most tools with API access.</p></details><details><summary>Will you share our results with other firms?</summary><p>Never by name. We highlight anonymized wins only, and we never display client names or logos without written permission.</p></details></div>
+</div></section>
+<section id="book"><div class="wrap"><div class="cta-band reveal">
+<div><span class="eyebrow">Next step</span><h2>Stop guessing. Start seeing your cost per signed case.</h2><p>Book a 30-minute strategy call. We'll look at your current ad accounts and reporting, show you where budget is leaking, and tell you honestly whether we're a fit.</p><ul><li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Walk through your real numbers, not a canned demo</li><li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Month-to-month. No long-term contracts</li><li><svg class="check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Works alongside your existing CRM and intake</li></ul></div>
+<div class="book-box"><div id="calendly-inline"></div><a href="#book" class="btn btn-primary js-book" data-loc="cta-band">Book a Strategy Call <span class="arr">&rarr;</span></a><p>Prefer email? <a href="mailto:team@alchemistmind.pro" style="color:var(--copper-2)">team@alchemistmind.pro</a></p></div>
+</div></div></section>
+</main>
+<footer class="site-footer"><div class="wrap">
+<div class="foot-grid">
+<div class="foot-brand"><a class="brand" href="index.html"><img src="assets/amp-logo-256.png" alt="" width="44" height="45"><span class="brand-name">Alchemist Mind Pros</span></a>
+<p>Performance marketing and attribution for law firms. We connect ad spend to signed cases so you can make decisions on revenue, not clicks.</p><span class="gp-badge" title="Alchemist Mind Pros is an official Google Partner"><svg class="gp-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Official Google Partner<small>Google Ads agency</small></span></span></div>
+<div><h4>Platform</h4><ul><li><a href="clearsignal.html">ClearSignal</a></li><li><a href="ai-sales-coach.html">AI Sales Coach</a></li><li><a href="check-in-app.html">Check-In App</a></li><li><a href="clearsignal.html#pricing">Pricing</a></li></ul></div>
+<div><h4>PPC Management</h4><ul><li><a href="ppc-management.html">Overview</a></li><li><a href="google-ads.html">Google Ads</a></li><li><a href="meta-ads.html">Meta Ads</a></li><li><a href="reddit-ads.html">Reddit Ads</a></li><li><a href="chatgpt-ads.html">ChatGPT Ads</a></li></ul></div>
+<div><h4>Company</h4><ul><li><a href="index.html#results">Results</a></li><li><a href="index.html#quiz">Free Self-Check</a></li><li><a href="index.html#calculator">Cost Per Signed Case Calculator</a></li><li><a href="index.html#founder">About Tre</a></li><li><a href="mailto:team@alchemistmind.pro">team@alchemistmind.pro</a></li><li><a href="https://www.linkedin.com/company/108311767/" target="_blank" rel="noopener">LinkedIn</a></li></ul></div>
+</div>
+<div class="foot-bottom"><span>&copy; <span class="yr">2026</span> Alchemist Mind Pros. ClearSignal is a product of Alchemist Mind Pros.</span><span><a href="privacy/">Privacy Policy</a> &nbsp;&middot;&nbsp; <a href="terms-app/">Terms of Service</a></span></div>
+</div></footer>
+<script src="assets/main.js"></script>
+</body></html>
