@@ -581,3 +581,49 @@ tr:last-child td{border-bottom:0}
 .hero .app .app-body{grid-template-columns:1fr}
 .hero .app .app-kpis{grid-template-columns:1fr 1fr}
 @media (max-width:760px){.vf-title{display:none}.video-grid>:last-child{order:-1}}
+
+/* ===== round 3: phone video + guarantees ===== */
+.hero-usps{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hu{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#D3D8DE;font-size:.9rem}
+.hu b{color:#fff;font-weight:700}
+.hu svg{color:var(--copper-2);flex:none}
+.hu.gold{background:rgba(221,167,106,.1);border-color:rgba(221,167,106,.4)}
+.hero .trust-row{margin-top:22px}
+.usp-cards{display:grid;gap:12px;margin-top:24px}
+.usp{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:16px 18px;border-radius:16px;background:#fff;border:1px solid var(--line)}
+.usp b{display:block;font-family:var(--font-h);font-size:1rem;color:var(--text);margin-bottom:3px}
+.usp p{font-size:.92rem}
+.usp-ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--copper-soft);color:var(--copper-deep)}
+.usp.gold{background:linear-gradient(135deg,#FFF8EF,#fff);border-color:#E8CFAE;box-shadow:0 10px 30px -18px rgba(192,138,79,.6)}
+.usp.gold .usp-ico{background:linear-gradient(135deg,var(--copper-2),var(--copper-deep));color:#fff}
+.g-note{font-size:.76rem;color:var(--muted);margin-top:16px;line-height:1.5;max-width:520px}
+.g-note.dark{color:#7F8996}
+.video-grid{grid-template-columns:1.05fr .95fr}
+.phone-stage{position:relative;display:flex;justify-content:center;padding:30px 0}
+.phone-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(192,138,79,.35),transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(10px)}
+.phone{position:relative;width:310px;padding:12px;border-radius:52px;background:linear-gradient(145deg,#2A3039,#0C1015 40%,#1A1F26);box-shadow:0 0 0 2px #C08A4F55,0 0 0 3px #0C1015,0 50px 90px -30px rgba(12,16,21,.7),inset 0 0 0 2px rgba(255,255,255,.06);z-index:1;transition:transform .4s}
+.phone:hover{transform:translateY(-6px) rotate(-1deg)}
+.ph-screen{position:relative;aspect-ratio:9/16;border-radius:40px;overflow:hidden;background:#000}
+.ph-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.ph-island{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:20px;background:#000;z-index:2;pointer-events:none}
+.ph-btn{position:absolute;width:4px;border-radius:2px;background:linear-gradient(#3A414B,#1A1F26)}
+.ph-b1{left:-4px;top:120px;height:34px}.ph-b2{left:-4px;top:170px;height:58px}.ph-b3{right:-4px;top:150px;height:80px}
+.float-chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:#fff;color:var(--text);font-weight:700;font-size:.84rem;box-shadow:0 14px 34px -12px rgba(12,16,21,.45);white-space:nowrap;animation:floaty 5s ease-in-out infinite}
+.float-chip svg{color:var(--copper-deep)}
+.fc-play{top:4%;left:2%;background:var(--ink);color:#fff;animation-delay:-1s}
+.fc-a{top:44%;right:-2%;animation-delay:-2.5s}
+.fc-b{bottom:8%;left:-2%;background:linear-gradient(135deg,var(--copper-2),var(--copper));color:#14100B}
+.fc-b svg{color:#14100B}
+.pulse-dot{width:10px;height:10px;border-radius:50%;background:#E06C5A;box-shadow:0 0 0 0 rgba(224,108,90,.7);animation:ring 1.8s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(224,108,90,.7)}70%{box-shadow:0 0 0 12px rgba(224,108,90,0)}100%{box-shadow:0 0 0 0 rgba(224,108,90,0)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.phone::after{content:"";position:absolute;inset:-14px;border-radius:64px;border:2px solid rgba(192,138,79,.45);animation:halo 2.6s ease-out infinite;pointer-events:none}
+@keyframes halo{0%{opacity:.9;transform:scale(.98)}100%{opacity:0;transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.float-chip,.phone::after,.pulse-dot{animation:none}}
+@media (max-width:1080px){.video-grid{grid-template-columns:1fr}}
+@media (max-width:760px){
+  .phone{width:250px;border-radius:44px}.ph-screen{border-radius:34px}
+  .fc-a{right:0}.fc-b{left:0}.fc-play{left:0}
+  .float-chip{font-size:.76rem;padding:8px 12px}
+  .hu{font-size:.84rem}
+}

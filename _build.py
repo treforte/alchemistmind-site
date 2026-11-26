@@ -132,10 +132,10 @@ def faq(items):
     return '<div class="faq">'+"".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q,a in items)+'</div>'
 
 def cta_band(h="Stop guessing. Start seeing your cost per signed case.", p="Book a 30-minute strategy call. We'll look at your current ad accounts and reporting, show you where budget is leaking, and tell you honestly whether we're a fit.", bullets=None):
-    bullets=bullets or ["Walk through your real numbers, not a canned demo","Month-to-month. No long-term contracts","Works alongside your existing CRM and intake"]
+    bullets=bullets or ["Walk through your real numbers, not a canned demo","Month-to-month. No long-term contracts","45-day results guarantee or your money back*"]
     lis="".join(f"<li>{chk()}{b}</li>" for b in bullets)
     return f'''<section id="book"><div class="wrap"><div class="cta-band reveal">
-<div><span class="eyebrow">Next step</span><h2>{h}</h2><p>{p}</p><ul>{lis}</ul></div>
+<div><span class="eyebrow">Next step</span><h2>{h}</h2><p>{p}</p><ul>{lis}</ul>{'<p class="g-note dark">'+GUARANTEE_NOTE+'</p>' if any('*' in x for x in bullets) else ''}</div>
 <div class="book-box"><div id="calendly-inline"></div>{book("Book a Strategy Call","btn-primary","cta-band")}<p>Prefer email? <a href="mailto:{EMAIL}" style="color:var(--copper-2)">{EMAIL}</a></p></div>
 </div></div></section>'''
 
@@ -252,16 +252,29 @@ CASES = f'''<div class="grid-2">
 # ---------- round 2 components ----------
 DRIVE_VIDEO = "https://drive.google.com/file/d/1YlGHNzrhW3onscFSIHpI23v8YrKK19gW/preview"
 
+GUARANTEE_NOTE = "*Applies to our management fees. Results are measured against the KPIs we agree on together at kickoff. Ad spend paid directly to Google, Meta and other platforms isn't refundable."
+
+def usp_cards():
+    return f'''<div class="usp-cards">
+<div class="usp"><span class="usp-ico">{icon("loop",20)}</span><div><b>Month-to-month. No long-term contracts.</b><p>We earn your business every 30 days. Stay because it's working, not because you signed a 12-month lock-in.</p></div></div>
+<div class="usp gold"><span class="usp-ico">{icon("shield",20)}</span><div><b>45-day results guarantee.*</b><p>If you don't see measurable results within your first 45 days, you get your money back. Simple as that.</p></div></div>
+</div>'''
+
 def video_section():
     return f'''<section class="video-sec" id="video"><div class="wrap video-grid">
 <div class="reveal"><span class="eyebrow">Watch &middot; 40 seconds</span><h2>What we do, <span class="accent">in under a minute.</span></h2>
 <p style="margin-top:16px;font-size:1.08rem">The short version: we run your ads, connect every lead to your CRM, and show you exactly which dollars turn into signed cases. Then we help your team convert more of them.</p>
-<ul class="video-points"><li>{chk()}Google &amp; Meta ads built on signed-case data</li><li>{chk()}ClearSignal reporting your whole firm can trust</li><li>{chk()}AI coaching, intake automation and HubSpot cleanup</li></ul>
-<div class="btn-row">{book("Book a Strategy Call","btn-primary","video")}</div></div>
-<div class="reveal"><div class="video-frame"><span class="vf-corner tl"></span><span class="vf-corner tr"></span><span class="vf-corner bl"></span><span class="vf-corner br"></span>
-<div class="vf-bar"><span class="vf-dots"><i></i><i></i><i></i></span><span class="vf-title">Alchemist Mind Pros &middot; What we do</span><span class="vf-rec"><i></i>0:40</span></div>
-<div class="vf-screen"><iframe src="{DRIVE_VIDEO}" title="What Alchemist Mind Pros does" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div></div>
-<p class="vf-caption">Tap play. Sound on recommended.</p></div>
+{usp_cards()}
+<div class="btn-row">{book("Book a Strategy Call","btn-primary","video")}<a href="#video-phone" class="btn btn-outline">&#9654;&nbsp; Watch the video</a></div>
+<p class="g-note">{GUARANTEE_NOTE}</p></div>
+<div class="phone-stage reveal" id="video-phone">
+<div class="phone-glow"></div>
+<span class="float-chip fc-play"><span class="pulse-dot"></span>Tap to watch &middot; 0:40</span>
+<span class="float-chip fc-a">{icon("check",14)}No long-term contracts</span>
+<span class="float-chip fc-b">{icon("shield",14)}45-day money-back guarantee</span>
+<div class="phone"><span class="ph-btn ph-b1"></span><span class="ph-btn ph-b2"></span><span class="ph-btn ph-b3"></span>
+<div class="ph-screen"><span class="ph-island"></span><iframe src="{DRIVE_VIDEO}" title="What Alchemist Mind Pros does (40 second video)" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div></div>
+</div>
 </div></section>'''
 
 def app_mock():
@@ -336,7 +349,8 @@ home = f'''
 <h1><span class="static">We help law firms</span><span class="rotator" aria-live="polite">{"".join(f"<span>{r}</span>" for r in home_rotate)}</span></h1>
 <p class="lede">Alchemist Mind Pros runs <strong>Google and Meta ads for law firms</strong> and connects every dollar to the cases it signs with <strong>ClearSignal</strong>, our AI-powered reporting dashboard. From $10K a month to $2M+, you make decisions on cost per signed case, not clicks.</p>
 <div class="btn-row">{book("Book a Strategy Call","btn-primary","home-hero")}<a href="#calculator" class="btn btn-ghost">Calculate your cost per signed case</a></div>
-<div class="trust-row">{gp_badge()}<span class="trust-item">{icon("check",16)}95%+ client retention</span><span class="trust-item">{icon("check",16)}Thousands of signed cases attributed</span><span class="trust-item">{icon("check",16)}Month-to-month</span></div>
+<div class="hero-usps"><span class="hu">{icon("loop",16)}<b>Month-to-month.</b> No long-term contracts.</span><span class="hu gold">{icon("shield",16)}<b>Results in 45 days</b> or your money back.*</span></div>
+<div class="trust-row">{gp_badge()}<span class="trust-item">{icon("check",16)}95%+ client retention</span><span class="trust-item">{icon("check",16)}Thousands of signed cases attributed</span></div>
 </div>
 <div style="position:relative">{dash_mock()}</div>
 </div></section>
@@ -443,7 +457,8 @@ home = f'''
 ("What does Alchemist Mind Pros actually do?","We're a performance marketing agency for law firms. We manage paid media (Google Ads, Meta, Reddit and ChatGPT ads) and build the landing pages behind it, connect everything to your CRM with ClearSignal so you can see cost per qualified lead and cost per signed case by channel, clean up and automate HubSpot, and offer intake tools (AI Sales Coach and the Check-In App) to help you convert more of the leads you pay for."),
 ("What budget do you need?","At least $10K a month in ad spend, with the comfort to scale when results prove out. Most of our best results come from firms investing $100K+ a month, and we manage accounts spending more than $2M a month."),
 ("Do I have to use ClearSignal to work with you on PPC?","No. Many clients start with PPC management and add ClearSignal later. Our PPC is strongest when signed-case data flows back into the ad platforms, which is what ClearSignal does."),
-("Do you lock us into a contract?","No. We work month-to-month and keep 95%+ of our clients because the numbers justify it."),
+("Do you lock us into a contract?","No. Every engagement is month-to-month with no long-term contract. We keep 95%+ of our clients because the numbers justify it, not because of the paperwork."),
+("What is the 45-day results guarantee?","At kickoff we agree on the KPIs that matter for your firm, like qualified lead rate, cost per qualified lead or cost per signed case. If you don't see measurable improvement against them within your first 45 days, we refund your management fees. Ad spend paid directly to the platforms isn't refundable."),
 ("Can you fix our HubSpot?","Yes. Our HubSpot-certified team handles portal cleanup, lifecycle stages, pipelines, workflows, lead routing and reporting."),
 ("Will this replace our CRM or intake software?","No. ClearSignal sits on top of the CRM you already use, with native two-way sync for HubSpot, Salesforce and Lead Docket, and custom connections for most tools with API access."),
 ("Will you share our results with other firms?","Never by name. We highlight anonymized wins only, and we never display client names or logos without written permission."),
@@ -581,7 +596,7 @@ ppc = sub_hero("PPC Management","PPC Management &middot; Official Google Partner
  "We manage Google, Meta, Reddit and ChatGPT ads for law firms spending $10K to $100K+ a month. Every campaign is built on clean tracking and optimized on what matters: <strong>cost per signed case</strong>.",
  ppc_vis, ctas=book("Get Your Account Audited","btn-primary","ppc-hero")+'<a href="#channels" class="btn btn-ghost">See channels</a>',
  rotate=["signed cases, not clicks.","cost per qualified lead.","revenue your CFO can verify.","what actually hits the caseload."],
- trust='<div class="trust-row">'+gp_badge()+f'<span class="trust-item">{icon("check",16)}$20M+ managed</span><span class="trust-item">{icon("check",16)}Month-to-month</span></div>') + f'''
+ trust='<div class="trust-row">'+gp_badge()+f'<span class="trust-item">{icon("check",16)}Month-to-month</span><span class="trust-item">{icon("check",16)}45-day results guarantee</span></div>') + f'''
 <section><div class="wrap"><div class="sec-head reveal"><span class="eyebrow">Why most law firm PPC underperforms</span><h2>The ads aren't the problem. <span class="accent">The scoreboard is.</span></h2><p>If your campaigns optimize for form fills, the platform will happily deliver cheap, unqualified ones. We fix the scoreboard first, then the campaigns.</p></div>
 {feature_cards([("target","Wrong conversion goals","Page views, button clicks and 10-second calls counted as conversions, teaching Google to chase junk."),("search","Search term leakage","Broad match and loose PMax spending on job seekers, free-advice hunters and the wrong practice areas."),("eye-off","No outcome feedback","Signed cases never make it back to the ad platforms, so bidding never improves where it counts.")])}</div></section>
 <section class="sec-paper" id="channels"><div class="wrap"><div class="sec-head center reveal"><span class="eyebrow">Channels</span><h2>Google first. <span class="accent">Then everywhere your clients are.</span></h2></div>{channel_tiles()}</div></section>
@@ -595,7 +610,7 @@ ppc = sub_hero("PPC Management","PPC Management &middot; Official Google Partner
 <div>{lp_mock()}</div></div></section>
 <section><div class="wrap"><div class="sec-head reveal"><span class="eyebrow">Our process</span><h2>How we take over an account</h2></div>
 {steps([("Audit","Full review of your accounts, tracking and CRM data, with findings in plain English."),("Fix tracking","Conversion goals cleaned up and signed-case data connected."),("Restructure","Campaigns rebuilt around practice areas, intent and profitability."),("Optimize weekly","Search terms, bids, budgets and creative reviewed every week."),("Scale what signs","Budget moved toward the channels and campaigns with the best cost per signed case.")])}
-<div style="margin-top:56px">{faq([("How much do you charge for PPC management?","Pricing is based on spend and scope. We'll give you an exact number after the audit call, with no long-term contract."),("Do you need access to our CRM?","To optimize on signed cases, yes. We connect read access to outcomes through ClearSignal. Without it, we're limited to lead-level optimization like everyone else."),("Do you follow legal advertising rules?","Yes. We build ads and landing pages with state bar advertising rules in mind and work with your team on any required disclaimers."),("Can you work alongside our in-house team?","Yes. Some firms hand us everything; others keep a channel in-house and use us for Google Ads and ClearSignal.")])}</div></div></section>
+<div style="margin-top:56px">{faq([("How much do you charge for PPC management?","Pricing is based on spend and scope. We'll give you an exact number after the audit call. Every engagement is month-to-month and backed by our 45-day results guarantee."),("Do you need access to our CRM?","To optimize on signed cases, yes. We connect read access to outcomes through ClearSignal. Without it, we're limited to lead-level optimization like everyone else."),("Do you follow legal advertising rules?","Yes. We build ads and landing pages with state bar advertising rules in mind and work with your team on any required disclaimers."),("Can you work alongside our in-house team?","Yes. Some firms hand us everything; others keep a channel in-house and use us for Google Ads and ClearSignal.")])}</div></div></section>
 {cta_band("Find out where your ad budget is leaking.","Book an audit call. We'll review your Google Ads account and tracking and show you exactly what we'd fix first.",["Plain-English findings","No long-term contract","Official Google Partner"])}
 '''
 page("ppc-management.html","Law Firm PPC Management | Google Partner Agency | Alchemist Mind Pros","PPC management for law firms spending $10K+/mo. Google, Meta, Reddit and ChatGPT ads optimized on cost per signed case by an official Google Partner.",ppc)
