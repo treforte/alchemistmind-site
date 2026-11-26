@@ -271,7 +271,7 @@ def video_section():
 <div class="phone-glow"></div>
 <span class="float-chip fc-play"><span class="pulse-dot"></span>Tap to watch &middot; 0:40</span>
 <div class="phone"><span class="ph-btn ph-b1"></span><span class="ph-btn ph-b2"></span><span class="ph-btn ph-b3"></span>
-<div class="ph-screen"><span class="ph-island"></span><iframe src="{DRIVE_VIDEO}" title="What Alchemist Mind Pros does (40 second video)" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div></div>
+<div class="ph-screen"><span class="ph-island"></span><span class="ph-shield" aria-hidden="true"></span><iframe src="{DRIVE_VIDEO}" title="What Alchemist Mind Pros does (40 second video)" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div></div>
 <div class="chip-row"><span class="float-chip fc-a">{icon("check",14)}No long-term contracts</span><span class="float-chip fc-b">{icon("shield",14)}45-day money-back guarantee</span></div>
 </div>
 </div></section>'''

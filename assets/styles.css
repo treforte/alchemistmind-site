@@ -633,3 +633,6 @@ tr:last-child td{border-bottom:0}
 .chip-row .fc-a{animation-delay:-2.5s}
 .fc-play{top:2%;left:4%}
 @media (min-width:761px){.phone-stage{padding-top:64px}.fc-play{top:8px;left:calc(50% - 200px)}}
+/* blocks Google Drive's pop-out button (top-right of embedded player) */
+.ph-shield{position:absolute;top:0;right:0;width:96px;height:96px;z-index:4;cursor:default;background:radial-gradient(circle at 100% 0,#000 0,#000 52%,rgba(0,0,0,0) 72%)}
+@media (max-width:760px){.ph-shield{width:84px;height:84px}}
