@@ -104,6 +104,25 @@ window.AMP_BOOKING_URL = window.AMP_BOOKING_URL || "https://calendly.com/tre-alc
     inputs.forEach(i=>i.addEventListener('input',upd)); upd();
   });
 
+
+  // ===== Phone video: autoplay muted, tap for sound, no pop-out =====
+  const v=document.getElementById('amp-video'), sb=document.querySelector('.ph-sound'), pr=document.querySelector('.ph-progress i');
+  if(v&&sb){
+    const txt=sb.querySelector('.ps-txt');
+    const io2=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ v.play().catch(()=>{}); } else if(v.muted){ v.pause(); } }),{threshold:.35});
+    io2.observe(v);
+    v.addEventListener('timeupdate',()=>{ if(pr&&v.duration) pr.style.width=(v.currentTime/v.duration*100)+'%'; });
+    function toggle(){
+      if(v.muted){ v.muted=false; v.loop=false; v.currentTime=0; v.play().catch(()=>{}); sb.classList.add('playing'); txt.textContent='Mute';
+        window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'video_sound_on',video:'what_we_do'}); }
+      else { v.muted=true; v.loop=true; sb.classList.remove('playing'); txt.textContent='Tap for sound'; }
+    }
+    sb.addEventListener('click',toggle);
+    v.addEventListener('click',()=>{ if(v.muted) toggle(); else if(v.paused) v.play(); else v.pause(); });
+    v.addEventListener('ended',()=>{ v.muted=true; v.loop=true; v.play().catch(()=>{}); sb.classList.remove('playing'); txt.textContent='Watch again with sound';
+      window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'video_complete',video:'what_we_do'}); });
+    v.addEventListener('contextmenu',e=>e.preventDefault());
+  }
   // year
   $$('.yr').forEach(e=>e.textContent=new Date().getFullYear());
 })();

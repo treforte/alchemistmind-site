@@ -636,3 +636,14 @@ tr:last-child td{border-bottom:0}
 /* blocks Google Drive's pop-out button (top-right of embedded player) */
 .ph-shield{position:absolute;top:0;right:0;width:96px;height:96px;z-index:4;cursor:default;background:radial-gradient(circle at 100% 0,#000 0,#000 52%,rgba(0,0,0,0) 72%)}
 @media (max-width:760px){.ph-shield{width:84px;height:84px}}
+/* native video in phone */
+.ph-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
+.ph-sound{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);z-index:4;display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;border:0;cursor:pointer;background:rgba(12,16,21,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-family:var(--font-h);font-weight:600;font-size:.9rem;box-shadow:0 0 0 2px rgba(221,167,106,.7),0 12px 30px -8px rgba(0,0,0,.6);animation:soundpulse 2s ease-in-out infinite;white-space:nowrap}
+.ph-sound .ps-ico{color:var(--copper-2);display:grid}
+.ph-sound:hover{background:rgba(12,16,21,.92)}
+@keyframes soundpulse{0%,100%{box-shadow:0 0 0 2px rgba(221,167,106,.7),0 0 0 0 rgba(221,167,106,.45),0 12px 30px -8px rgba(0,0,0,.6)}50%{box-shadow:0 0 0 2px rgba(221,167,106,.9),0 0 0 12px rgba(221,167,106,0),0 12px 30px -8px rgba(0,0,0,.6)}}
+.ph-sound.playing{animation:none;bottom:auto;top:46px;left:auto;right:14px;transform:none;padding:9px 12px;font-size:.78rem}
+.ph-progress{position:absolute;left:18px;right:18px;bottom:16px;height:4px;border-radius:4px;background:rgba(255,255,255,.25);z-index:4;overflow:hidden;pointer-events:none}
+.ph-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--copper-2),var(--copper))}
+@media (prefers-reduced-motion:reduce){.ph-sound{animation:none}}
+.ph-sound.playing{top:auto;bottom:30px;right:14px}
